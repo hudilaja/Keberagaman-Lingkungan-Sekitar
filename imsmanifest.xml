@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="MANIFEST-IPS7-LINGKUNGAN-SEKITAR-01" version="1.2"
+<manifest identifier="MANIFEST-IPS7-PENCEMARAN-LINGKUNGAN-01" version="1.2"
           xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
           xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,17 +10,17 @@
     <schema>ADL SCORM</schema>
     <schemaversion>1.2</schemaversion>
   </metadata>
-  <organizations default="ORG-IPS7-LINGKUNGAN">
-    <organization identifier="ORG-IPS7-LINGKUNGAN" structure="hierarchical">
-      <title>IPS SMP Kelas 7 - Tema 02: Keberagaman Lingkungan Sekitar</title>
-      <item identifier="ITEM-IPS7-02" identifierref="RES-IPS7-02" isvisible="true">
-        <title>Modul Interaktif &amp; Evaluasi Keberagaman Lingkungan Sekitar</title>
+  <organizations default="ORG-IPS7-PENCEMARAN">
+    <organization identifier="ORG-IPS7-PENCEMARAN" structure="hierarchical">
+      <title>IPS SMP Kelas 7 - Keberagaman Lingkungan Sekitar: Pencemaran Lingkungan</title>
+      <item identifier="ITEM-IPS7-PENCEMARAN-01" identifierref="RES-IPS7-PENCEMARAN-01" isvisible="true">
+        <title>Modul Interaktif &amp; Evaluasi Pencemaran Lingkungan Sekitar</title>
         <adlcp:masteryscore>75</adlcp:masteryscore>
       </item>
     </organization>
   </organizations>
   <resources>
-    <resource identifier="RES-IPS7-02" type="webcontent" adlcp:scormtype="sco" href="index.html">
+    <resource identifier="RES-IPS7-PENCEMARAN-01" type="webcontent" adlcp:scormtype="sco" href="index.html">
       <file href="index.html"/>
     </resource>
   </resources>

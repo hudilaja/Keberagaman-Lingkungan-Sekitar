@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Media Pembelajaran IPS SMP: Keberagaman Lingkungan Sekitar (SCORM 1.2)</title>
+  <title>Media Pembelajaran IPS: Pencemaran Lingkungan Sekitar (SCORM 1.2)</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -13,28 +13,28 @@
         extend: {
           colors: {
             brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            eco: {
               50: '#f0fdf4',
               100: '#dcfce7',
               200: '#bbf7d0',
               300: '#86efac',
               400: '#4ade80',
-              500: '#16a34a',
-              600: '#15803d',
-              700: '#166534',
-              800: '#14532d',
-              900: '#052e16',
-            },
-            earth: {
-              50: '#fdf8f6',
-              100: '#f2e8e5',
-              200: '#eaddd7',
-              300: '#e0cec7',
-              400: '#d2bab0',
-              500: '#b5836f',
-              600: '#9d6753',
-              700: '#804f3f',
-              800: '#673f33',
-              900: '#54342a',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
             }
           },
           fontFamily: {
@@ -90,8 +90,8 @@
 
     /* Drag and Drop Styling */
     .drag-target.drag-over {
-      border-color: #16a34a !important;
-      background-color: rgba(22, 163, 74, 0.12) !important;
+      border-color: #10b981 !important;
+      background-color: rgba(16, 185, 129, 0.15) !important;
       transform: scale(1.02);
     }
   </style>
@@ -104,14 +104,14 @@
       <div class="flex items-center justify-between h-16">
         <!-- Logo & Title -->
         <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-earth-600 via-amber-600 to-brand-600 flex items-center justify-center text-white shadow-md shadow-amber-600/20 font-bold text-xl">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 font-bold text-xl">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
           <div>
-            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">IPS EduLearn: Keberagaman Lingkungan Sekitar</h1>
-            <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">IPS SMP Kelas 7 • Kurikulum Merdeka (Kemendikbudristek 2023) • Standar SCORM 1.2</p>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">EcoLearn IPS: Pencemaran Lingkungan Sekitar</h1>
+            <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">IPS Kelas 7 • Tema 02: Keberagaman Lingkungan Sekitar • Kurikulum Merdeka 2023</p>
           </div>
         </div>
 
@@ -124,7 +124,7 @@
           </div>
 
           <!-- Sound Effects Toggle -->
-          <button id="btn-sound-toggle" onclick="toggleSound()" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" title="Beralih Suara (Efek Audio)">
+          <button id="btn-sound-toggle" onclick="toggleSound()" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" title="Beralih Efek Suara">
             <svg id="icon-sound-on" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
             </svg>
@@ -135,7 +135,7 @@
           </button>
 
           <!-- Theme Dark/Light Toggle -->
-          <button id="btn-theme-toggle" onclick="toggleTheme()" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" title="Ubah Tema Gelap/Terang">
+          <button id="btn-theme-toggle" onclick="toggleTheme()" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" title="Ubah Mode Gelap/Terang">
             <!-- Sun icon -->
             <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -150,7 +150,7 @@
 
       <!-- Navigation Tabs (Desktop & Mobile Scrollable) -->
       <nav class="flex space-x-1 sm:space-x-3 border-t border-slate-100 dark:border-slate-800/80 py-2 overflow-x-auto no-scrollbar" aria-label="Tabs">
-        <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn active flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap bg-brand-500 text-white shadow-sm shadow-brand-500/30">
+        <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn active flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap bg-brand-600 text-white shadow-sm shadow-brand-500/30">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
@@ -191,32 +191,32 @@
     <!-- ========================================== -->
     <section id="content-dashboard" class="tab-content block space-y-8 animate-fadeIn">
       <!-- Welcome Hero Banner -->
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-800 via-teal-700 to-amber-700 p-6 sm:p-10 text-white shadow-xl shadow-brand-900/10">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-800 via-teal-800 to-cyan-900 p-6 sm:p-10 text-white shadow-xl shadow-brand-900/10">
         <div class="relative z-10 max-w-3xl space-y-4">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-semibold tracking-wide uppercase text-amber-100">
-            <span>Buku IPS Kelas 7 Edisi Revisi 2023</span>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-semibold tracking-wide uppercase text-emerald-200">
+            <span>IPS Kelas 7 SMP/MTs</span>
             <span>•</span>
-            <span>Kemendikbudristek</span>
+            <span>Kurikulum Merdeka 2023</span>
           </div>
           <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            Selamat Datang di Lab Sosial, <span id="student-display-name" class="underline decoration-amber-300 decoration-wavy">Siswa Pembelajar</span>!
+            Selamat Datang di Lab Ekologi Sosial, <span id="student-display-name" class="underline decoration-cyan-300 decoration-wavy">Siswa Pembelajar</span>!
           </h2>
           <p class="text-sm sm:text-base text-emerald-50/90 leading-relaxed">
-            Eksplorasi keterkaitan antara proses pembentukan bumi, corak kehidupan masyarakat masa praaksara, dinamika interaksi sosial, hingga pentingnya pelestarian alam dan pembangunan berkelanjutan (*Sustainable Development*) di lingkungan sekitarmu.
+            Kenali lingkungan sekitarmu, pahami bagaimana zat pencemar (polutan) merusak komponen abiotik dan biotik di bumi, uji coba simulasi keseimbangan ekosistem di kanvas interaktif, dan buktikan pemahamanmu melalui evaluasi berstandar SCORM 1.2.
           </p>
           <div class="flex flex-wrap gap-3 pt-2">
-            <button onclick="switchTab('modul')" class="inline-flex items-center space-x-2 bg-white text-emerald-800 hover:bg-amber-50 px-5 py-2.5 rounded-xl font-bold text-sm shadow-md transition-transform hover:-translate-y-0.5">
-              <span>Mulai Pelajari Materi</span>
+            <button onclick="switchTab('modul')" class="inline-flex items-center space-x-2 bg-white text-emerald-800 hover:bg-emerald-50 px-5 py-2.5 rounded-xl font-bold text-sm shadow-md transition-transform hover:-translate-y-0.5">
+              <span>Pelajari Teori Pencemaran</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
-            <button onclick="switchTab('simulasi')" class="inline-flex items-center space-x-2 bg-emerald-950/40 hover:bg-emerald-950/60 border border-white/30 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">
-              <span>Buka Timeline Geologis & Lab Interaktif</span>
+            <button onclick="switchTab('simulasi')" class="inline-flex items-center space-x-2 bg-emerald-950/50 hover:bg-emerald-950/70 border border-white/30 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">
+              <span>Buka Simulator Kualitas Lingkungan</span>
             </button>
           </div>
         </div>
 
         <!-- Decorative Background Shapes -->
-        <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-cyan-400/10 rounded-full blur-2xl pointer-events-none"></div>
         <div class="absolute right-1/4 -top-12 w-64 h-64 bg-emerald-400/20 rounded-full blur-3xl pointer-events-none"></div>
       </div>
 
@@ -232,7 +232,7 @@
           </div>
           <div class="mt-3">
             <h4 id="dash-lesson-status" class="text-xl font-bold text-slate-800 dark:text-white capitalize">incomplete</h4>
-            <p class="text-xs text-slate-500 mt-1">Standar KKM Kelulusan: <span class="font-semibold text-brand-600">75 / 100</span></p>
+            <p class="text-xs text-slate-500 mt-1">KKM Kelulusan LMS: <span class="font-semibold text-brand-600">75 / 100</span></p>
           </div>
         </div>
 
@@ -264,7 +264,7 @@
           <div class="mt-3">
             <div class="flex items-center justify-between text-sm font-semibold mb-1">
               <span id="dash-reading-pct" class="text-slate-800 dark:text-white">0%</span>
-              <span class="text-xs text-slate-400">4 Sub-tema</span>
+              <span class="text-xs text-slate-400">4 Sub-topik</span>
             </div>
             <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
               <div id="dash-reading-bar" class="bg-brand-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -275,14 +275,14 @@
         <!-- Metric 4: Tantangan Interaktif -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Lab Praaksara</span>
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Lab Polusi & 4R</span>
             <span class="p-2 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
             </span>
           </div>
           <div class="mt-3">
             <h4 id="dash-lab-status" class="text-xl font-bold text-slate-800 dark:text-white">Belum Dicoba</h4>
-            <p class="text-xs text-slate-500 mt-1">Timeline Geologis & Drag-and-drop artefak</p>
+            <p class="text-xs text-slate-500 mt-1">Eco-Simulator & Drag-and-drop 4R</p>
           </div>
         </div>
       </div>
@@ -293,9 +293,9 @@
           <div>
             <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              Indikator Ketercapaian Tujuan Pembelajaran (IKTP)
+              Indikator Ketercapaian Pembelajaran (IKTP)
             </h3>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Capaian kompetensi esensial Tema 02 IPS Kelas 7 Edisi 2023:</p>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Kompetensi yang dicapai dalam materi Pencemaran Lingkungan Sekitar:</p>
           </div>
         </div>
 
@@ -305,8 +305,8 @@
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
-              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">1. Periodisasi Geologis Sejarah Pembentukan Bumi</h5>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Mampu membedakan karakteristik 4 zaman geologis: Arkaekum, Paleozoikum, Mesozoikum, dan Neozoikum (Tersier & Kuarter).</p>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">1. Konsep Lingkungan & Syarat Polutan</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Membedakan komponen biotik dan abiotik serta menganalisis 3 kriteria suatu zat dapat diklasifikasikan sebagai polutan.</p>
             </div>
           </div>
 
@@ -315,8 +315,8 @@
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
-              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">2. Kehidupan Masyarakat Masa Praaksara</h5>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Menganalisis corak bertahan hidup berburu-meramu, bercocok tanam, hingga masa perundagian serta bukti arkeologisnya.</p>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">2. Pencemaran Udara & Pemanasan Global</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Mengidentifikasi sumber polusi udara (CO, CO2, SOx, NOx, CFC), bahaya ISPA, efek rumah kaca, dan terjadinya hujan asam.</p>
             </div>
           </div>
 
@@ -325,8 +325,8 @@
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
-              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">3. Interaksi Sosial & Pengaruh Kondisi Geografis</h5>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Mengidentifikasi syarat interaksi sosial, bentuk asosiatif/disosiatif, dan pengaruh bentang alam terhadap mata pencaharian.</p>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">3. Pencemaran Air & Tanah</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Menganalisis pencemaran limbah cair domestik/industri, fenomena eutrofikasi ledakan eceng gondok, dan limbah plastik anorganik di tanah.</p>
             </div>
           </div>
 
@@ -335,31 +335,31 @@
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </div>
             <div>
-              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">4. Kelangkaan & Pembangunan Berkelanjutan (SDGs)</h5>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Menjelaskan konsep kelangkaan sumber daya serta penerapan 3 pilar utama pembangunan berkelanjutan bagi generasi masa depan.</p>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">4. Penanggulangan Berkelanjutan (Prinsip 4R & IPAL)</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Menerapkan prinsip Reduce, Reuse, Recycle, Replace serta instalasi pengolahan limbah untuk menjaga kelestarian lingkungan sekitar.</p>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Roadmap 3 Langkah Belajar -->
-      <div class="bg-gradient-to-br from-slate-100 to-amber-50 dark:from-slate-900 dark:to-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700/60">
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Alur Belajar Mandiri:</h3>
+      <div class="bg-gradient-to-br from-slate-100 to-emerald-50 dark:from-slate-900 dark:to-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700/60">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Langkah Belajar Terpadu:</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="bg-white dark:bg-slate-800/90 rounded-xl p-4 shadow-sm border border-slate-200/80 dark:border-slate-700">
             <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 mb-2">Langkah 1</span>
             <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Buka Modul Teori</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Pelajari 4 era geologi bumi, kehidupan praaksara di Indonesia, serta interaksi sosial di masyarakat sekitar.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Pelajari definisi polutan, karakteristik pencemaran udara, air, dan tanah, serta balik kartu pintar istilah kunci.</p>
           </div>
           <div class="bg-white dark:bg-slate-800/90 rounded-xl p-4 shadow-sm border border-slate-200/80 dark:border-slate-700">
-            <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 mb-2">Langkah 2</span>
-            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Jalankan Simulator Interaktif</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Geser slider timeline geologis Canvas 2D dan cocokkan artefak praaksara ke wadah periodisasi yang pas.</p>
+            <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300 mb-2">Langkah 2</span>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Jalankan Simulator Ekologi</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Eksperimen dengan slider polusi vs penghijauan di Canvas dan selesaikan tantangan drag-and-drop pemilahan limbah 4R.</p>
           </div>
           <div class="bg-white dark:bg-slate-800/90 rounded-xl p-4 shadow-sm border border-slate-200/80 dark:border-slate-700">
             <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 mb-2">Langkah 3</span>
-            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Evaluasi Tes SCORM</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Tuntaskan 10 soal evaluasi. Raih nilai minimal 75 agar SCORM LMS mencatat status Anda sebagai <strong>passed</strong>.</p>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Evaluasi Akhir SCORM</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Jawab 10 soal evaluasi. Capai skor minimal 75 agar SCORM LMS mencatat status Anda sebagai <strong>passed</strong>.</p>
           </div>
         </div>
       </div>
@@ -372,274 +372,258 @@
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-4">
         <div>
-          <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Modul IPS Terpadu Kelas 7</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Tema 02: Keberagaman Lingkungan Sekitar</h2>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Berdasarkan Buku Siswa IPS Kelas 7 Edisi Revisi Kemendikbudristek 2023.</p>
+          <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Materi Pembelajaran IPS SMP Kelas 7</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Pencemaran Lingkungan di Sekitar Kita</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Sumber: Buku IPS Kelas 7 Edisi Revisi Kemendikbudristek 2023 (Tema 02: Keberagaman Lingkungan Sekitar).</p>
         </div>
         <!-- Topic Quick Jump Filter -->
         <div class="flex flex-wrap gap-2 text-xs">
-          <button onclick="scrollToTopic('topik-geologi')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">1. Geologis Bumi</button>
-          <button onclick="scrollToTopic('topik-praaksara')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">2. Masa Praaksara</button>
-          <button onclick="scrollToTopic('topik-interaksi')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">3. Interaksi Sosial</button>
-          <button onclick="scrollToTopic('topik-sdg')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">4. Kelangkaan & SDGs</button>
+          <button onclick="scrollToTopic('topik-konsep')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">1. Konsep & Polutan</button>
+          <button onclick="scrollToTopic('topik-udara')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">2. Pencemaran Udara</button>
+          <button onclick="scrollToTopic('topik-air')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">3. Pencemaran Air & Tanah</button>
+          <button onclick="scrollToTopic('topik-solusi')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">4. Upaya 4R & IPAL</button>
         </div>
       </div>
 
-      <!-- 1. Periodisasi Geologis Sejarah Pembentukan Bumi -->
-      <div id="topik-geologi" class="space-y-4">
+      <!-- 1. Konsep Lingkungan & Polutan -->
+      <div id="topik-konsep" class="space-y-4">
         <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">1</span>
-          Berkenalan dengan Alam: Periodisasi Geologis Pembentukan Bumi
+          <span class="w-7 h-7 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-bold">1</span>
+          Berkenalan dengan Lingkungan Hidup & Konsep Polutan
         </h3>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-          Menurut ilmu geologi, bumi terbentuk sekitar 4,5 miliar tahun lalu dan mengalami 4 tahapan zaman utama:
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+          Lingkungan hidup adalah kesatuan ruang dengan semua benda, daya, keadaan, dan makhluk hidup termasuk manusia dan perilakunya. Lingkungan tersusun atas dua komponen vital:
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Zaman Arkaekum -->
-          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
-            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">± 2.500 Juta Tahun Lalu</span>
-            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Arkaekum</h4>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-              Zaman tertua. Kerak bumi masih sangat panas membara, rotasi cepat, atmosfer dipenuhi gas vulkanik beracun.
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h4 class="font-bold text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+              🌿 Komponen Biotik (Makhluk Hidup)
+            </h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2">
+              Segala makhluk hidup yang menempati ekosistem sekitar kita: <strong>manusia, hewan (fauna), tumbuhan (flora), dan mikroorganisme pengurai</strong> (jamur dan bakteri).
             </p>
-            <div class="mt-3 text-[11px] font-semibold text-rose-600 dark:text-rose-400">
-              ⚡ Belum ada tanda-tanda kehidupan sama sekali.
-            </div>
           </div>
 
-          <!-- Zaman Paleozoikum -->
-          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
-            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">± 340 Juta Tahun Lalu</span>
-            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Paleozoikum</h4>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-              Dikenal sebagai zaman primer (hidup tua). Suhu bumi mulai mendingin dan curah hujan sangat tinggi menciptakan samudra.
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h4 class="font-bold text-sm text-cyan-600 dark:text-cyan-400 flex items-center gap-2">
+              🪨 Komponen Abiotik (Benda Tak Hidup)
+            </h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2">
+              Benda-benda tak hidup penunjang kelangsungan ekosistem: <strong>udara, air, tanah, bebatuan, kelembapan, suhu, dan intensitas sinar matahari</strong>.
             </p>
-            <div class="mt-3 text-[11px] font-semibold text-blue-600 dark:text-blue-400">
-              🐟 Muncul mikroorganisme, ubur-ubur, ikan purba, amfibi, dan lumut.
-            </div>
           </div>
+        </div>
 
-          <!-- Zaman Mesozoikum -->
-          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
-            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">± 140 Juta Tahun Lalu</span>
-            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Mesozoikum</h4>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-              Zaman sekunder (hidup pertengahan) atau zaman reptil raksasa (*Dinosaurus, Atlantosaurus, Tyrannosaurus*).
-            </p>
-            <div class="mt-3 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
-              🦖 Didominasi reptil raksasa serta awal munculnya pohon runjung pinus.
-            </div>
-          </div>
-
-          <!-- Zaman Neozoikum -->
-          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
-            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">± 60 Juta Tahun Lalu - Kini</span>
-            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Neozoikum</h4>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-              Zaman hidup baru, terbagi atas Zaman Tersier (berkembangnya hewan mamalia menyusui) dan Zaman Kuarter.
-            </p>
-            <div class="mt-3 text-[11px] font-semibold text-purple-600 dark:text-purple-400">
-              🚶 Munculnya manusia purba hingga manusia modern (*Homo sapiens*).
-            </div>
-          </div>
+        <!-- Box Syarat Polutan -->
+        <div class="p-5 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 space-y-2">
+          <h4 class="text-sm font-bold text-amber-800 dark:text-amber-300 flex items-center gap-2">
+            ⚠️ Kapan Suatu Zat Dikatakan sebagai "Polutan" (Bahan Pencemar)?
+          </h4>
+          <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+            Menurut UU No. 32 Tahun 2009 dan materi IPS Kelas 7, suatu zat/energi dikatakan sebagai <strong>polutan</strong> jika menimbulkan kerugian dan memenuhi salah satu dari 3 syarat mutlak:
+          </p>
+          <ul class="text-xs space-y-1 text-slate-700 dark:text-slate-300 list-disc list-inside pt-1">
+            <li><strong>Jumlahnya melebihi batas normal (ambang batas baku mutu lingkungan).</strong></li>
+            <li><strong>Berada pada waktu yang tidak tepat</strong> (misal gas beracun saat jam sibuk masyarakat).</li>
+            <li><strong>Berada pada tempat yang tidak semestinya</strong> (misal limbah deterjen di sumber air minum).</li>
+          </ul>
         </div>
       </div>
 
-      <!-- 2. Kehidupan Masyarakat Masa Praaksara -->
-      <div id="topik-praaksara" class="space-y-4 pt-4">
+      <!-- 2. Pencemaran Udara -->
+      <div id="topik-udara" class="space-y-4 pt-4">
         <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">2</span>
-          Mengenal Masyarakat Masa Praaksara di Lingkungan Nusantara
+          <span class="w-7 h-7 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-bold">2</span>
+          Pencemaran Udara: Penyebab, Gas Berbahaya, dan Dampaknya
         </h3>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-          Zaman Praaksara (*nirleka*) adalah masa sebelum manusia mengenal tulisan. Corak kehidupan manusia praaksara berkembang melalui tiga tahapan besar:
-        </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Tahap 1: Berburu & Meramu -->
           <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
-            <span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">Fase 1</span>
-            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Berburu & Mengumpulkan Makanan</h4>
-            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-3 list-disc list-inside">
-              <li><strong>Pola Hidup:</strong> Bergantung penuh pada alam (*food gathering*), hidup berpindah-pindah (*nomaden*).</li>
-              <li><strong>Tempat Tinggal:</strong> Gua-gua payung karang di tepi sungai atau pantai (*abris sous roche*).</li>
-              <li><strong>Alat Peninggalan:</strong> Kapak perimbas (*chopper*), alat serpih (*flakes*), dan alat dari tulang binatang.</li>
-              <li><strong>Bukti Nyata:</strong> Fosil bukit kerang sampah dapur (*kjokkenmoddinger*) setinggi bermeter-meter di pesisir timur Sumatra.</li>
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">Sumber Polutan</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Asal Usul Polusi Udara</h4>
+            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-2 list-disc list-inside">
+              <li>Asap knalpot kendaraan bermotor (terutama berbahan bakar fosil timbal/solar).</li>
+              <li>Cerobong pabrik industri tanpa filter udara basah (*wet scrubber*).</li>
+              <li>Pembakaran sampah plastik rumah tangga di ruang terbuka (*open burning*).</li>
+              <li>Kebakaran hutan dan lahan gambut (karhutla).</li>
             </ul>
           </div>
 
-          <!-- Tahap 2: Bercocok Tanam -->
           <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
-            <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Fase 2</span>
-            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Bercocok Tanam (Food Producing)</h4>
-            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-3 list-disc list-inside">
-              <li><strong>Revolusi Kebudayaan:</strong> Berubah dari sekadar mencari makanan menjadi memproduksi makanan (*food producing*).</li>
-              <li><strong>Pola Hidup:</strong> Menetap (*sedenter*) di perkampungan dekat sumber air, membabat hutan untuk berladang/berkebun.</li>
-              <li><strong>Peralatan Halus:</strong> Beliung persegi untuk memotong kayu, kapak lonjong, dan gerabah tanah liat.</li>
-              <li><strong>Sistem Sosial:</strong> Mulai mengenal pembagian kerja dan kepemimpinan desa (*primus inter pares*).</li>
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">Senyawa Gas</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Polutan Udara Utama</h4>
+            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-2 list-disc list-inside">
+              <li><strong>Karbon Monoksida (CO):</strong> Gas tak berbau beracun yang mengikat hemoglobin darah.</li>
+              <li><strong>Karbon Dioksida (CO2):</strong> Memicu efek rumah kaca dan pemanasan global.</li>
+              <li><strong>Sulfur Oksida (SOx) & Nitrogen Oksida (NOx):</strong> Bereaksi dengan uap air memicu <em>hujan asam</em>.</li>
+              <li><strong>CFC:</strong> Merusak lapisan ozon pelindung radiasi ultraviolet.</li>
             </ul>
           </div>
 
-          <!-- Tahap 3: Masa Perundagian -->
           <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
-            <span class="px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">Fase 3</span>
-            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Masa Perundagian (Megalitikum & Logam)</h4>
-            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-3 list-disc list-inside">
-              <li><strong>Kata 'Undagi':</strong> Berarti golongan terampil atau ahli dalam mencetak logam perunggu dan besi.</li>
-              <li><strong>Peralatan Logam:</strong> Nekara perunggu (genderang upacara hujan), moko, kapak corong (*candrasa*), dan bejana.</li>
-              <li><strong>Tradisi Megalitikum:</strong> Menhir (tugu batu pemujaan roh nenek moyang), dolmen (meja batu sajen), sarkofagus (peti mati batu).</li>
-              <li><strong>Kepercayaan:</strong> Berkembangnya sistem religi animisme dan dinamisme.</li>
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">Dampak Nyata</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Akibat terhadap Kehidupan</h4>
+            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-2 list-disc list-inside">
+              <li>Meningkatnya penderita <strong>ISPA (Infeksi Saluran Pernapasan Akut)</strong> dan asma pada anak-anak.</li>
+              <li>Hujan asam melarutkan logam berat tanah dan merusak bangunan bersejarah/candi.</li>
+              <li>Perubahan iklim ekstrem dan kenaikan permukaan air laut akibat mencairnya es kutub.</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- 3. Interaksi Sosial & Pengaruh Kondisi Geografis Lingkungan -->
-      <div id="topik-interaksi" class="space-y-4 pt-4">
+      <!-- 3. Pencemaran Air & Tanah -->
+      <div id="topik-air" class="space-y-4 pt-4">
         <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">3</span>
-          Interaksi Sosial & Karakteristik Masyarakat Berdasarkan Bentang Alam
+          <span class="w-7 h-7 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-bold">3</span>
+          Pencemaran Air & Tanah di Lingkungan Sekitar
         </h3>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <!-- Interaksi Sosial Asosiatif vs Disosiatif -->
-          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
-            <h4 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 text-brand-600">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-              Syarat & Bentuk Interaksi Sosial
-            </h4>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-              Interaksi sosial adalah hubungan timbal balik antara individu dengan individu, individu dengan kelompok, atau antarkelompok. Terjadi jika memenuhi <strong>Kontak Sosial</strong> dan <strong>Komunikasi</strong>.
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Pencemaran Air -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-3">
+            <div class="flex items-center space-x-2 text-cyan-600 dark:text-cyan-400 font-bold">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              <h4 class="text-base sm:text-lg">Pencemaran Air (Sungai, Danau, Laut)</h4>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Masuknya polutan cair atau padat ke perairan sehingga menurunkan kadar oksigen terlarut (*Dissolved Oxygen / DO*) dan mengubah warna, rasa, serta bau air.
             </p>
-            <div class="mt-3 space-y-2 text-xs">
-              <div class="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
-                <span class="font-bold text-emerald-700 dark:text-emerald-300">Bentuk Asosiatif (Mengarah pada persatuan):</span>
-                <p class="text-slate-600 dark:text-slate-400 mt-0.5">Kerja sama/gotong royong, akomodasi (penyelesaian damai), asimilasi, dan akulturasi budaya.</p>
-              </div>
-              <div class="p-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800">
-                <span class="font-bold text-rose-700 dark:text-rose-300">Bentuk Disosiatif (Mengarah pada perpecahan):</span>
-                <p class="text-slate-600 dark:text-slate-400 mt-0.5">Persaingan (kompetisi sehat), kontravensi (ketidaksukaan tersembunyi), dan pertentangan/konflik.</p>
-              </div>
+            <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700">
+              <p><strong>Pemicu Utama:</strong> Limbah cair pabrik tanpa IPAL, tumpahan minyak di laut, serta deterjen rumah tangga.</p>
+              <p><strong>Fenomena Eutrofikasi:</strong> Penumpukan sisa pupuk fosfat/nitrat memicu ledakan pertumbuhan gulma air (eceng gondok), menutup sinar matahari, dan membunuh biota ikan air tawar.</p>
             </div>
           </div>
 
-          <!-- Pengaruh Bentang Alam -->
-          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
-            <h4 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 text-amber-600">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              Adaptasi Lingkungan Fisik & Mata Pencaharian
-            </h4>
-            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-              Kondisi geografis membentuk kebudayaan dan corak ekonomi masyarakat di Indonesia:
+          <!-- Pencemaran Tanah -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-3">
+            <div class="flex items-center space-x-2 text-amber-600 dark:text-amber-400 font-bold">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <h4 class="text-base sm:text-lg">Pencemaran Tanah</h4>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Kondisi tanah yang terkontaminasi senyawa kimia buatan manusia atau sampah yang sulit terurai secara alami, mengakibatkan hilangnya kesuburan tanah.
             </p>
-            <div class="mt-3 space-y-2 text-xs">
-              <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <strong>1. Wilayah Pesisir/Pantai:</strong> Dominan berprofesi sebagai nelayan, petani garam, budidaya tambak, serta pengolah ikan asin. Pola rumah berderet sejajar garis pantai.
-              </div>
-              <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <strong>2. Dataran Rendah:</strong> Pusat pemukiman padat, pertanian sawah irigasi, perdagangan, industri pabrik, dan pusat transportasi perkotaan.
-              </div>
-              <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                <strong>3. Dataran Tinggi/Pegunungan:</strong> Suhu dingin sejuk memicu perkebunan teh, kopi, sayur mayur hortikultura, pariwisata alam, dan pola terasering sawah.
-              </div>
+            <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700">
+              <p><strong>Pemicu Utama:</strong> Timbunan sampah anorganik (kantong kresek, styrofoam, botol plastik) yang butuh ratusan tahun untuk terurai.</p>
+              <p><strong>Dampak:</strong> Mematikan cacing tanah dan mikroba dekomposer, menghambat peresapan air ke air tanah, serta meracuni tanaman pangan.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 4. Kelangkaan Sumber Daya & Pembangunan Berkelanjutan (SDGs) -->
-      <div id="topik-sdg" class="space-y-4 pt-4">
+      <!-- 4. Upaya Penanggulangan: Prinsip 4R & IPAL -->
+      <div id="topik-solusi" class="space-y-4 pt-4">
         <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">4</span>
-          Kelangkaan Ekonomi & Pembangunan Berkelanjutan (SDGs)
+          <span class="w-7 h-7 rounded-lg bg-brand-600 text-white flex items-center justify-center text-sm font-bold">4</span>
+          Upaya Pelestarian: Prinsip 4R, IPAL, & Bioremediasi
         </h3>
 
-        <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-900 dark:to-slate-800/80 border border-emerald-200 dark:border-slate-700 space-y-3">
-          <h4 class="text-base font-bold text-emerald-800 dark:text-emerald-300">Pilar Pembangunan Berkelanjutan (*Sustainable Development*)</h4>
-          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            Pembangunan berkelanjutan adalah upaya sadar dan terencana yang memadukan aspek <strong>lingkungan hidup, sosial, dan ekonomi</strong> ke dalam strategi pembangunan untuk menjamin keutuhan lingkungan hidup serta keselamatan, kemampuan, dan mutu hidup generasi masa kini dan masa depan.
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-xs">
-            <div class="bg-white/80 dark:bg-slate-800 p-3 rounded-xl border border-emerald-100 dark:border-slate-700">
-              <span class="font-bold text-emerald-700 dark:text-emerald-400">1. Pilar Ekologis (Lingkungan)</span>
-              <p class="text-slate-600 dark:text-slate-400 mt-1">Konservasi keanekaragaman hayati, reboisasi, pengolahan limbah ramah lingkungan, dan pencegahan polusi.</p>
-            </div>
-            <div class="bg-white/80 dark:bg-slate-800 p-3 rounded-xl border border-emerald-100 dark:border-slate-700">
-              <span class="font-bold text-emerald-700 dark:text-emerald-400">2. Pilar Ekonomi</span>
-              <p class="text-slate-600 dark:text-slate-400 mt-1">Efisiensi penggunaan sumber daya alam yang langka dan mencegah eksploitasi berlebihan yang merusak alam.</p>
-            </div>
-            <div class="bg-white/80 dark:bg-slate-800 p-3 rounded-xl border border-emerald-100 dark:border-slate-700">
-              <span class="font-bold text-emerald-700 dark:text-emerald-400">3. Pilar Sosial Budaya</span>
-              <p class="text-slate-600 dark:text-slate-400 mt-1">Pemberdayaan kearifan lokal masyarakat adat (*local wisdom*) dalam menjaga hutan dan sumber mata air.</p>
-            </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="font-extrabold text-brand-600 dark:text-brand-400 text-lg">1. Reduce</span>
+            <h5 class="text-xs font-bold text-slate-800 dark:text-slate-100 uppercase mt-1">Mengurangi Potensi Sampah</h5>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+              Membawa tas belanja kain sendiri dan botol minum (*tumbler*) untuk mengurangi pemakaian plastik sekali pakai.
+            </p>
           </div>
+
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="font-extrabold text-blue-600 dark:text-blue-400 text-lg">2. Reuse</span>
+            <h5 class="text-xs font-bold text-slate-800 dark:text-slate-100 uppercase mt-1">Menggunakan Kembali</h5>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+              Memanfaatkan kembali barang layak pakai tanpa proses pengolahan, misal kaleng biskuit bekas menjadi wadah alat tulis.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="font-extrabold text-purple-600 dark:text-purple-400 text-lg">3. Recycle</span>
+            <h5 class="text-xs font-bold text-slate-800 dark:text-slate-100 uppercase mt-1">Mendaur Ulang</h5>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+              Mengolah limbah menjadi barang baru yang bernilai ekonomis, seperti mendaur ulang botol plastik menjadi bijih plastik atau serat pakaian.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="font-extrabold text-amber-600 dark:text-amber-400 text-lg">4. Replace</span>
+            <h5 class="text-xs font-bold text-slate-800 dark:text-slate-100 uppercase mt-1">Mengganti Bahan Ramah Lingkungan</h5>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+              Beralih ke sedotan berbahan kertas/bambu dan kantong kresek berbasis pati singkong yang mudah terurai (*biodegradable*).
+            </p>
+          </div>
+        </div>
+
+        <!-- Box IPAL & Bioremediasi -->
+        <div class="p-5 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+          <p><strong>🏗️ IPAL (Instalasi Pengolahan Air Limbah):</strong> Sarana penyaringan fisik, kimiawi, dan biologis agar air limbah industri memenuhi baku mutu netral sebelum dialirkan ke sungai umum.</p>
+          <p><strong>🌱 Bioremediasi:</strong> Pemanfaatan mikroorganisme atau tanaman khusus (fitoremediasi seperti enceng gondok/kiambang) untuk menetralisir racun dan zat polutan di lahan terkontaminasi.</p>
         </div>
       </div>
 
-      <!-- Flashcards Istilah Kunci (Interactive Flip) -->
+      <!-- Flashcards Istilah Kunci 3D Flip -->
       <div class="pt-4 space-y-4">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
-            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-            Kartu Pintar: Istilah Kunci Tema 2 (Ketuk untuk Membalik)
+            <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            Kartu Pintar: Istilah Kunci Pencemaran Lingkungan (Ketuk untuk Membalik)
           </h3>
-          <span class="text-xs text-slate-400">Klik kartu untuk melihat definisi</span>
+          <span class="text-xs text-slate-400">Klik kartu untuk melihat makna istilah</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Flip Card 1: Kjokkenmoddinger -->
+          <!-- Flip Card 1: Polutan -->
           <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
             <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
               <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
-                <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider">Arkeologi Praaksara</span>
-                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Kjokkenmoddinger</h5>
+                <span class="text-[10px] font-bold text-rose-600 uppercase tracking-wider">Konsep Dasar</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Polutan</h5>
                 <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
               </div>
-              <div class="flip-card-back bg-gradient-to-br from-amber-700 to-amber-900 text-white p-4 flex flex-col items-center justify-center text-center">
-                <p class="text-xs leading-relaxed">Fosil bukit sampah dapur dari kulit kerang dan siput purba yang membatu setinggi bermeter-meter di tepi pantai peninggalan zaman Mesolitikum.</p>
+              <div class="flip-card-back bg-gradient-to-br from-rose-700 to-rose-900 text-white p-4 flex flex-col items-center justify-center text-center">
+                <p class="text-xs leading-relaxed">Zat atau bahan yang menyebabkan terjadinya pencemaran karena melebihi ambang batas normal, berada di tempat yang salah, atau pada waktu yang keliru.</p>
               </div>
             </div>
           </div>
 
-          <!-- Flip Card 2: Abris Sous Roche -->
+          <!-- Flip Card 2: Eutrofikasi -->
           <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
             <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
               <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
-                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Hunian Purba</span>
-                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Abris Sous Roche</h5>
+                <span class="text-[10px] font-bold text-cyan-600 uppercase tracking-wider">Pencemaran Air</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Eutrofikasi</h5>
                 <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
               </div>
-              <div class="flip-card-back bg-gradient-to-br from-blue-700 to-indigo-900 text-white p-4 flex flex-col items-center justify-center text-center">
-                <p class="text-xs leading-relaxed">Gua-gua ceruk batu karang yang dijadikan tempat berteduh dan hunian semi-permanen oleh manusia praaksara dari terpaan cuaca dan serangan predator.</p>
+              <div class="flip-card-back bg-gradient-to-br from-cyan-700 to-blue-900 text-white p-4 flex flex-col items-center justify-center text-center">
+                <p class="text-xs leading-relaxed">Ledakan pertumbuhan alga/tumbuhan air akibat penumpukan zat hara pupuk buatan (fosfat/nitrat), menghabiskan kadar oksigen terlarut dalam air.</p>
               </div>
             </div>
           </div>
 
-          <!-- Flip Card 3: Kelangkaan -->
+          <!-- Flip Card 3: Hujan Asam -->
           <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
             <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
               <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
-                <span class="text-[10px] font-bold text-rose-600 uppercase tracking-wider">Ekonomi Lingkungan</span>
-                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Kelangkaan (Scarcity)</h5>
+                <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">Polusi Atmosfer</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Hujan Asam</h5>
                 <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
               </div>
-              <div class="flip-card-back bg-gradient-to-br from-rose-700 to-pink-900 text-white p-4 flex flex-col items-center justify-center text-center">
-                <p class="text-xs leading-relaxed">Kondisi ketidakseimbangan di mana kebutuhan manusia jumlahnya tidak terbatas, sementara ketersediaan sumber daya pemenuh kebutuhan sifatnya terbatas.</p>
+              <div class="flip-card-back bg-gradient-to-br from-purple-700 to-indigo-900 text-white p-4 flex flex-col items-center justify-center text-center">
+                <p class="text-xs leading-relaxed">Presipitasi air hujan berkadar pH sangat rendah (asam &lt; 5.6) akibat gas sulfur oksida (SO2) dan nitrogen oksida (NO2) bercampur dengan uap awan.</p>
               </div>
             </div>
           </div>
 
-          <!-- Flip Card 4: Menhir & Megalitikum -->
+          <!-- Flip Card 4: IPAL -->
           <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
             <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
               <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
-                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Religi Purba</span>
-                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Menhir & Dolmen</h5>
+                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solusi Ekologi</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">IPAL</h5>
                 <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
               </div>
               <div class="flip-card-back bg-gradient-to-br from-emerald-700 to-teal-900 text-white p-4 flex flex-col items-center justify-center text-center">
-                <p class="text-xs leading-relaxed">Monumen batu besar zaman Megalitikum; Menhir berupa tiang batu pemujaan roh leluhur, sedangkan Dolmen adalah meja batu pelataran sajen sesaji.</p>
+                <p class="text-xs leading-relaxed">Instalasi Pengolahan Air Limbah; sistem pengolahan limbah cair industri secara kimiawi dan biologis sebelum dibuang kembali ke badan air alami.</p>
               </div>
             </div>
           </div>
@@ -661,133 +645,145 @@
     <section id="content-simulasi" class="tab-content hidden space-y-8 animate-fadeIn">
       <!-- Section Header -->
       <div class="pb-4 border-b border-slate-200 dark:border-slate-800">
-        <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Laboratorium Virtual IPS</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Simulator Garis Waktu Geologis & Artefak Praaksara</h2>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Eksperimen langsung memahami skala waktu geologis bumi serta klasifikasi artefak peninggalan manusia purba.</p>
+        <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Laboratorium Ekologi Virtual</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Simulator Keseimbangan Kualitas Lingkungan Hidup</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Amati dampak langsung emisi pabrik, sampah, dan kendaraan terhadap kualitas udara, air, dan kesehatan ekosistem di kanvas 2D.</p>
       </div>
 
-      <!-- SIMULASI 1: Canvas HTML5 Visualisasi Garis Waktu Geologi Bumi -->
+      <!-- SIMULASI 1: Canvas HTML5 Interaktif Kualitas Lingkungan Sekitar -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-7 shadow-sm space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              Eksperimen 1: Garis Waktu Evolusi Geologis Bumi (Canvas 2D)
+              <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Eksperimen 1: Eco-Simulator Pencemaran & Pelestarian Alam (Canvas 2D)
             </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Pilih era geologis di bawah atau gunakan tombol navigasi untuk mengamati transformasi kondisi planet bumi.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Geser slider parameter di bawah untuk mengamati perubahan kondisi udara, air sungai, dan vegetasi pohon.</p>
           </div>
 
-          <!-- Epoch Buttons -->
-          <div class="flex flex-wrap gap-1.5 text-xs">
-            <button onclick="setEpoch(0)" id="btn-epoch-0" class="epoch-btn px-3 py-1.5 rounded-lg font-bold bg-amber-600 text-white shadow-sm">1. Arkaekum</button>
-            <button onclick="setEpoch(1)" id="btn-epoch-1" class="epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200">2. Paleozoikum</button>
-            <button onclick="setEpoch(2)" id="btn-epoch-2" class="epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200">3. Mesozoikum</button>
-            <button onclick="setEpoch(3)" id="btn-epoch-3" class="epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200">4. Neozoikum</button>
+          <!-- Parameter Control Sliders -->
+          <div class="flex flex-wrap items-center gap-4 bg-slate-100 dark:bg-slate-800/60 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs">
+            <div>
+              <label class="block font-semibold text-slate-700 dark:text-slate-300">Intensitas Polusi (Industri & Kendaraan):</label>
+              <input type="range" id="slider-pollution" min="0" max="100" value="70" oninput="handleEcoSliderChange()" class="w-36 accent-rose-500 cursor-pointer">
+              <span id="slider-pollution-val" class="font-bold text-rose-600 ml-1">70%</span>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-700 dark:text-slate-300">Upaya Pelestarian (Reboisasi & IPAL):</label>
+              <input type="range" id="slider-green" min="0" max="100" value="30" oninput="handleEcoSliderChange()" class="w-36 accent-emerald-500 cursor-pointer">
+              <span id="slider-green-val" class="font-bold text-emerald-600 ml-1">30%</span>
+            </div>
           </div>
         </div>
 
         <!-- Canvas Container -->
         <div class="relative w-full rounded-2xl bg-slate-950 overflow-hidden border border-slate-800 shadow-inner flex flex-col items-center">
-          <canvas id="geologyCanvas" width="900" height="340" class="w-full max-w-full h-auto"></canvas>
+          <canvas id="ecoCanvas" width="900" height="340" class="w-full max-w-full h-auto"></canvas>
           
           <!-- Live Telemetry Bar -->
           <div class="w-full bg-slate-900/90 border-t border-slate-800 px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
             <div class="flex flex-wrap items-center gap-4">
               <div>
-                <span class="text-slate-400">Nama Zaman:</span>
-                <span id="geo-name" class="font-bold text-amber-400 ml-1">Arkaekum</span>
+                <span class="text-slate-400">Indeks Kualitas Udara (AQI):</span>
+                <span id="telemetry-aqi" class="font-bold text-rose-400 ml-1">165 (Tidak Sehat)</span>
               </div>
               <div>
-                <span class="text-slate-400">Kurun Waktu:</span>
-                <span id="geo-time" class="font-bold text-emerald-400 ml-1">± 2.500 Juta Tahun Lalu</span>
+                <span class="text-slate-400">Kejernihan Air Sungai:</span>
+                <span id="telemetry-water" class="font-bold text-amber-400 ml-1">Keruh / Tercemar</span>
               </div>
               <div class="hidden md:block">
-                <span class="text-slate-400">Status Kehidupan:</span>
-                <span id="geo-life" class="font-bold text-rose-400 ml-1">Nir-kehidupan (Bumi Panas Membara)</span>
+                <span class="text-slate-400">Kesehatan Ekosistem:</span>
+                <span id="telemetry-eco" class="font-bold text-rose-400 ml-1">Terdegradasi</span>
               </div>
             </div>
 
-            <button onclick="cycleEpoch()" class="bg-brand-600 hover:bg-brand-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
-              Zaman Berikutnya ➜
-            </button>
+            <div class="flex items-center space-x-2">
+              <button onclick="setEcoPreset('clean')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors">
+                Mode Hijau Lestari
+              </button>
+              <button onclick="setEcoPreset('polluted')" class="bg-rose-600 hover:bg-rose-500 text-white px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors">
+                Mode Darurat Polusi
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Epoch Educational Description -->
-        <div id="geo-desc-box" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs leading-relaxed text-slate-700 dark:text-slate-300">
-          <strong class="text-amber-600 dark:text-amber-400">Kondisi Fisiografis & Lingkungan:</strong>
-          <span id="geo-desc-text">Zaman tertua dalam sejarah bumi. Kerak bumi masih berupa cairan lava membara dengan suhu yang teramat panas. Terjadi hujan meteorit secara konstan dan gas atmosfer dipenuhi uap belerang serta karbon dioksida. Belum ada tanda-tanda organisme hidup.</span>
+        <!-- Educational Explanation Box -->
+        <div id="eco-desc-box" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+          <strong class="text-emerald-600 dark:text-emerald-400">Analisis Kondisi Lingkungan:</strong>
+          <span id="eco-desc-text">Tingkat emisi polusi yang tinggi tanpa diimbangi reboisasi dan filtrasi limbah menyebabkan asap pekat menutupi sinar matahari, air sungai berubah cokelat kehitaman dengan endapan deterjen, serta memicu gangguan pernapasan bagi masyarakat sekitar.</span>
         </div>
       </div>
 
-      <!-- SIMULASI 2: Drag & Drop Klasifikasi Peninggalan Praaksara & Konsep IPS -->
+      <!-- SIMULASI 2: Drag & Drop Pengelolaan Sampah & Polutan (Prinsip 4R) -->
       <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-7 shadow-sm space-y-6">
         <div>
           <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            Eksperimen 2: Tantangan Drag & Drop Peninggalan Praaksara & Interaksi Lingkungan
+            Eksperimen 2: Tantangan Drag & Drop Penanggulangan Polutan (Prinsip 4R & IPAL)
           </h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Tarik (drag) kartu konsep di bawah dan tempatkan (drop) ke wadah kategori yang paling tepat!</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Tarik (drag) kartu jenis sampah/limbah di bawah dan masukkan (drop) ke metode penanganan yang paling tepat!</p>
         </div>
 
         <!-- Draggable Source Cards -->
         <div class="space-y-2">
-          <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Kartu Artefak & Peristiwa Tersedia:</span>
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Kartu Jenis Limbah / Polutan Tersedia:</span>
           <div id="drag-sources-container" class="flex flex-wrap gap-3 p-4 rounded-2xl bg-slate-100 dark:bg-slate-800/50 min-h-[70px] border border-slate-200 dark:border-slate-700">
-            <!-- Item 1: Kjokkenmoddinger -->
-            <div id="drag-kjokken" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-amber-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="kjokken">
-              🐚 Kjokkenmoddinger & Abris Sous Roche
+            <!-- Item 1: Botol Plastik PET -->
+            <div id="drag-botol" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-purple-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="recycle">
+              ♻️ Botol Plastik PET Bekas Minuman
             </div>
-            <!-- Item 2: Beliung Persegi -->
-            <div id="drag-beliung" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="beliung">
-              🪓 Beliung Persegi & Kapak Lonjong
+            <!-- Item 2: Air Limbah Tekstil -->
+            <div id="drag-tekstil" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-cyan-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="ipal">
+              🧪 Air Limbah Pewarna Pabrik Tekstil
             </div>
-            <!-- Item 3: Nekara Perunggu -->
-            <div id="drag-nekara" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-purple-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="nekara">
-              🥁 Nekara Perunggu & Menhir Megalitikum
+            <!-- Item 3: Kaleng Biskuit Logam -->
+            <div id="drag-kaleng" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-amber-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="reuse">
+              🧰 Kaleng Biskuit Kosong Layak Pakai
             </div>
-            <!-- Item 4: Gotong Royong Petani -->
-            <div id="drag-gotong" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-blue-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="gotong">
-              🤝 Gotong Royong Irigasi (Interaksi Asosiatif)
+            <!-- Item 4: Kantong Plastik Belanja -->
+            <div id="drag-plastik" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="replace">
+              🛍️ Kantong Kresek Belanja Sekali Pakai
             </div>
           </div>
         </div>
 
         <!-- Drop Targets Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Target 1: Berburu & Meramu -->
-          <div id="drop-target-kjokken" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'kjokken')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
-            <span class="text-xs font-bold text-amber-600 uppercase">Kategori A</span>
-            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Masa Berburu & Mengumpulkan Makanan (Nomaden/Gua)</p>
-            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          <!-- Target 1: Recycle -->
+          <div id="drop-target-recycle" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'recycle')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-purple-600 uppercase">Solusi 1: Recycle (Daur Ulang)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Dicacah dan dilebur kembali menjadi bijih plastik bahan baku baru</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan limbah di sini</div>
           </div>
 
-          <!-- Target 2: Bercocok Tanam -->
-          <div id="drop-target-beliung" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'beliung')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
-            <span class="text-xs font-bold text-emerald-600 uppercase">Kategori B</span>
-            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Masa Bercocok Tanam (Food Producing / Sedenter)</p>
-            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          <!-- Target 2: IPAL -->
+          <div id="drop-target-ipal" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'ipal')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-cyan-600 uppercase">Solusi 2: Filter IPAL Industri</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Penyaringan zat kimia beracun & netralisasi pH sebelum dialirkan ke sungai</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan limbah di sini</div>
           </div>
 
-          <!-- Target 3: Masa Perundagian -->
-          <div id="drop-target-nekara" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'nekara')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
-            <span class="text-xs font-bold text-purple-600 uppercase">Kategori C</span>
-            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Masa Perundagian & Tradisi Megalitikum (Logam/Batu Besar)</p>
-            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          <!-- Target 3: Reuse -->
+          <div id="drop-target-reuse" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'reuse')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-amber-600 uppercase">Solusi 3: Reuse (Guna Ulang)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Digunakan kembali langsung menjadi wadah perkakas tanpa diolah</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan limbah di sini</div>
           </div>
 
-          <!-- Target 4: Interaksi Sosial -->
-          <div id="drop-target-gotong" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'gotong')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
-            <span class="text-xs font-bold text-blue-600 uppercase">Kategori D</span>
-            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Dinamika Sosial Masyarakat Sekitar (Kerjasama Lingkungan)</p>
-            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          <!-- Target 4: Replace -->
+          <div id="drop-target-replace" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'replace')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-emerald-600 uppercase">Solusi 4: Replace (Ganti Bahan)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Beralih ke tas kain jinjing atau kantong nabati berbahan pati singkong</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan limbah di sini</div>
           </div>
         </div>
 
         <!-- Feedback & Reset -->
         <div class="flex items-center justify-between pt-2">
           <div id="dnd-status-feedback" class="text-xs font-semibold text-slate-500">
-            Cocokkan 4 kartu peninggalan/konsep ke wadah periodisasi yang pas.
+            Cocokkan 4 kartu limbah ke metode pengolahan yang tepat.
           </div>
           <button onclick="resetDragAndDrop()" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
             Reset Tantangan Kartu
@@ -812,8 +808,8 @@
       <div class="pb-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Evaluasi Standar SCORM 1.2</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Tes Pemahaman: Keberagaman Lingkungan Sekitar</h2>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">10 Soal Pilihan Ganda berbobot 10 poin per soal. Syarat kelulusan (KKM): <strong class="text-brand-600">75 poin</strong>.</p>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Tes Pemahaman: Pencemaran Lingkungan Sekitar</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">10 Soal Pilihan Ganda berbobot 10 poin per soal. Syarat kelulusan KKM: <strong class="text-brand-600">75 poin</strong>.</p>
         </div>
 
         <div class="flex items-center space-x-3 bg-white dark:bg-slate-900 px-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
@@ -895,7 +891,7 @@
       <div id="review-container" class="hidden space-y-4 pt-6">
         <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
           <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-          Kunci Jawaban & Pembahasan Mendalam (Buku IPS Kelas 7 Edisi 2023)
+          Kunci Jawaban & Pembahasan Mendalam (Buku IPS Kelas 7)
         </h3>
         <div id="review-items-list" class="space-y-4">
           <!-- Diisi otomatis setelah submit -->
@@ -913,7 +909,7 @@
         <span>Modul SCORM 1.2 Terverifikasi (cmi.core.score.raw & lesson_status)</span>
       </div>
       <div>
-        IPS SMP Kelas 7 • Tema 02: Keberagaman Lingkungan Sekitar • Kurikulum Merdeka 2023
+        IPS Kelas 7 • Tema 02: Keberagaman Lingkungan Sekitar (Pencemaran Lingkungan) • Kemendikbudristek
       </div>
     </div>
   </footer>
@@ -1152,7 +1148,7 @@
        3. DARK / LIGHT THEME TOGGLE
        ======================================================== */
     function initTheme() {
-      const savedTheme = localStorage.getItem("ips_theme");
+      const savedTheme = localStorage.getItem("ecolearn_theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
         document.documentElement.classList.add("dark");
@@ -1168,10 +1164,10 @@
     function toggleTheme() {
       playSound("click");
       const isDark = document.documentElement.classList.toggle("dark");
-      localStorage.setItem("ips_theme", isDark ? "dark" : "light");
+      localStorage.setItem("ecolearn_theme", isDark ? "dark" : "light");
       document.getElementById("icon-sun").classList.toggle("hidden", !isDark);
       document.getElementById("icon-moon").classList.toggle("hidden", isDark);
-      if (typeof drawGeologySimulation === "function") drawGeologySimulation();
+      if (typeof drawEcoSimulation === "function") drawEcoSimulation();
     }
 
     /* ========================================================
@@ -1185,13 +1181,13 @@
       updateReadingProgress();
 
       document.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.classList.remove("active", "bg-brand-500", "text-white", "shadow-sm", "shadow-brand-500/30");
+        btn.classList.remove("active", "bg-brand-600", "text-white", "shadow-sm", "shadow-brand-500/30");
         btn.classList.add("text-slate-600", "dark:text-slate-300", "hover:bg-slate-100", "dark:hover:bg-slate-800");
       });
 
       const activeBtn = document.getElementById(`tab-btn-${tabId}`);
       if (activeBtn) {
-        activeBtn.classList.add("active", "bg-brand-500", "text-white", "shadow-sm", "shadow-brand-500/30");
+        activeBtn.classList.add("active", "bg-brand-600", "text-white", "shadow-sm", "shadow-brand-500/30");
         activeBtn.classList.remove("text-slate-600", "dark:text-slate-300", "hover:bg-slate-100", "dark:hover:bg-slate-800");
       }
 
@@ -1209,8 +1205,8 @@
 
       if (tabId === "simulasi") {
         setTimeout(() => {
-          resizeGeologyCanvas();
-          drawGeologySimulation();
+          resizeEcoCanvas();
+          drawEcoSimulation();
         }, 50);
       }
     }
@@ -1237,199 +1233,200 @@
     }
 
     /* ========================================================
-       5. SIMULASI CANVAS HTML5: GARIS WAKTU GEOLOGIS BUMI
+       5. SIMULASI CANVAS HTML5: ECO-SIMULATOR PENCEMARAN
        ======================================================== */
-    const geoCanvas = document.getElementById("geologyCanvas");
-    const geoCtx = geoCanvas.getContext("2d");
+    const ecoCanvas = document.getElementById("ecoCanvas");
+    const ecoCtx = ecoCanvas.getContext("2d");
 
-    let currentEpochIndex = 0;
+    let pollutionLevel = 70; // 0 to 100
+    let greenLevel = 30; // 0 to 100
 
-    const epochs = [
-      {
-        name: "Zaman Arkaekum",
-        time: "± 2.500 Juta Tahun Lalu",
-        life: "Nir-kehidupan (Bumi Panas Membara)",
-        desc: "Zaman tertua dalam sejarah bumi. Kerak bumi masih berupa cairan lava membara dengan suhu yang teramat panas. Terjadi hujan meteorit secara konstan dan gas atmosfer dipenuhi uap belerang serta karbon dioksida. Belum ada tanda-tanda organisme hidup.",
-        skyColorTop: "#450a0a",
-        skyColorBottom: "#7f1d1d",
-        groundColor: "#b91c1c",
-        lavaGlow: true,
-        creatures: "Lahar & Batuan Vulkanik"
-      },
-      {
-        name: "Zaman Paleozoikum",
-        time: "± 340 Juta Tahun Lalu",
-        life: "Zaman Primer (Mikroorganisme, Ikan, & Amfibi Awal)",
-        desc: "Suhu permukaan bumi mulai mendingin dan curah hujan sangat lebat menghasilkan samudra luas purba. Mulai bermunculan mikroorganisme bersel tunggal, ubur-ubur, cacing laut, ikan bertulang rawan, dan tumbuhan lumut paku pertama.",
-        skyColorTop: "#082f49",
-        skyColorBottom: "#0284c7",
-        groundColor: "#0f766e",
-        lavaGlow: false,
-        creatures: "Trilobita, Ikan Purba & Lautan"
-      },
-      {
-        name: "Zaman Mesozoikum",
-        time: "± 140 Juta Tahun Lalu",
-        life: "Zaman Sekunder (Kejayaan Reptil Raksasa / Dinosaurus)",
-        desc: "Iklim bumi menjadi hangat dan lembap dengan hutan pakis dan pohon runjung raksasa. Masa ini merupakan zaman kejayaan reptil-reptil purba berukuran raksasa seperti Brachiosaurus, Tyrannosaurus rex, serta munculnya burung dan mamalia berkantung kecil.",
-        skyColorTop: "#064e3b",
-        skyColorBottom: "#059669",
-        groundColor: "#365314",
-        lavaGlow: false,
-        creatures: "Dinosaurus & Hutan Pakis Purba"
-      },
-      {
-        name: "Zaman Neozoikum",
-        time: "± 60 Juta Tahun Lalu - Sekarang",
-        life: "Zaman Tersier & Kuarter (Kemunculan Manusia Purba & Modern)",
-        desc: "Bumi telah stabil sepenuhnya. Dinosaurus telah punah digantikan oleh dominasi mamalia besar (hewan menyusui). Pada kala Pleistosen dan Holosen di Zaman Kuarter, manusia purba (Pithecanthropus / Homo) mulai muncul dan berkembang di kepulauan Nusantara.",
-        skyColorTop: "#1e1b4b",
-        skyColorBottom: "#4338ca",
-        groundColor: "#15803d",
-        lavaGlow: false,
-        creatures: "Mamalia, Manusia Purba & Alam Modern"
-      }
-    ];
-
-    function resizeGeologyCanvas() {
-      const container = geoCanvas.parentElement;
+    function resizeEcoCanvas() {
+      const container = ecoCanvas.parentElement;
       if (container) {
         const w = container.clientWidth;
-        geoCanvas.width = w > 900 ? 900 : Math.max(340, w);
-        geoCanvas.height = Math.min(340, Math.round(geoCanvas.width * 0.4));
+        ecoCanvas.width = w > 900 ? 900 : Math.max(340, w);
+        ecoCanvas.height = Math.min(340, Math.round(ecoCanvas.width * 0.4));
       }
     }
 
     window.addEventListener("resize", () => {
-      resizeGeologyCanvas();
-      drawGeologySimulation();
+      resizeEcoCanvas();
+      drawEcoSimulation();
     });
 
-    function drawGeologySimulation() {
-      const epoch = epochs[currentEpochIndex];
-      const w = geoCanvas.width;
-      const h = geoCanvas.height;
+    function handleEcoSliderChange() {
+      pollutionLevel = parseInt(document.getElementById("slider-pollution").value);
+      greenLevel = parseInt(document.getElementById("slider-green").value);
 
-      // 1. Sky Gradient
-      const skyGrad = geoCtx.createLinearGradient(0, 0, 0, h * 0.7);
-      skyGrad.addColorStop(0, epoch.skyColorTop);
-      skyGrad.addColorStop(1, epoch.skyColorBottom);
-      geoCtx.fillStyle = skyGrad;
-      geoCtx.fillRect(0, 0, w, h);
+      document.getElementById("slider-pollution-val").innerText = `${pollutionLevel}%`;
+      document.getElementById("slider-green-val").innerText = `${greenLevel}%`;
 
-      // 2. Stars / Meteorites if Arkaekum
-      if (currentEpochIndex === 0) {
-        geoCtx.fillStyle = "#fef08a";
-        for (let i = 0; i < 25; i++) {
-          const sx = (Math.sin(i * 99) * 0.5 + 0.5) * w;
-          const sy = (Math.cos(i * 33) * 0.5 + 0.5) * (h * 0.5);
-          geoCtx.fillRect(sx, sy, 2, 2);
-        }
-        // Meteor fire streak
-        geoCtx.beginPath();
-        geoCtx.strokeStyle = "rgba(251, 146, 60, 0.8)";
-        geoCtx.lineWidth = 3;
-        geoCtx.moveTo(w * 0.7, h * 0.1);
-        geoCtx.lineTo(w * 0.85, h * 0.3);
-        geoCtx.stroke();
-      }
-
-      // 3. Mountains / Distant Terrain
-      geoCtx.beginPath();
-      geoCtx.fillStyle = currentEpochIndex === 0 ? "#7f1d1d" : (currentEpochIndex === 1 ? "#0369a1" : "#14532d");
-      geoCtx.moveTo(0, h * 0.65);
-      geoCtx.lineTo(w * 0.25, h * 0.45);
-      geoCtx.lineTo(w * 0.5, h * 0.6);
-      geoCtx.lineTo(w * 0.75, h * 0.4);
-      geoCtx.lineTo(w, h * 0.65);
-      geoCtx.lineTo(w, h);
-      geoCtx.lineTo(0, h);
-      geoCtx.closePath();
-      geoCtx.fill();
-
-      // 4. Foreground Terrain & Elements
-      const groundGrad = geoCtx.createLinearGradient(0, h * 0.6, 0, h);
-      groundGrad.addColorStop(0, epoch.groundColor);
-      groundGrad.addColorStop(1, "#020617");
-      geoCtx.fillStyle = groundGrad;
-      geoCtx.fillRect(0, h * 0.65, w, h * 0.35);
-
-      // 5. Special Era Visuals
-      if (currentEpochIndex === 0) {
-        // Lava Cracks
-        geoCtx.beginPath();
-        geoCtx.strokeStyle = "#fbbf24";
-        geoCtx.lineWidth = 4;
-        geoCtx.moveTo(w * 0.1, h * 0.75);
-        geoCtx.lineTo(w * 0.3, h * 0.85);
-        geoCtx.lineTo(w * 0.6, h * 0.8);
-        geoCtx.lineTo(w * 0.9, h * 0.9);
-        geoCtx.stroke();
-      } else if (currentEpochIndex === 1) {
-        // Ocean waves
-        geoCtx.fillStyle = "rgba(14, 165, 233, 0.4)";
-        geoCtx.beginPath();
-        geoCtx.arc(w * 0.3, h * 0.8, 45, 0, Math.PI * 2);
-        geoCtx.arc(w * 0.7, h * 0.82, 60, 0, Math.PI * 2);
-        geoCtx.fill();
-      } else if (currentEpochIndex === 2) {
-        // Silhouette of Dino Neck / Tree
-        geoCtx.fillStyle = "#1c1917";
-        geoCtx.beginPath();
-        geoCtx.arc(w * 0.75, h * 0.52, 14, 0, Math.PI * 2); // head
-        geoCtx.moveTo(w * 0.75, h * 0.52);
-        geoCtx.quadraticCurveTo(w * 0.78, h * 0.65, w * 0.82, h * 0.8); // neck
-        geoCtx.lineTo(w * 0.72, h * 0.8);
-        geoCtx.closePath();
-        geoCtx.fill();
-      } else if (currentEpochIndex === 3) {
-        // Human camp / shelter silhouette
-        geoCtx.fillStyle = "#1e293b";
-        geoCtx.beginPath();
-        geoCtx.moveTo(w * 0.25, h * 0.75);
-        geoCtx.lineTo(w * 0.35, h * 0.6);
-        geoCtx.lineTo(w * 0.45, h * 0.75);
-        geoCtx.closePath();
-        geoCtx.fill();
-      }
-
-      // Update Telemetry Text
-      document.getElementById("geo-name").innerText = epoch.name;
-      document.getElementById("geo-time").innerText = epoch.time;
-      document.getElementById("geo-life").innerText = epoch.life;
-      document.getElementById("geo-desc-text").innerText = epoch.desc;
+      drawEcoSimulation();
+      document.getElementById("dash-lab-status").innerText = "Aktif Bereksperimen";
     }
 
-    function setEpoch(index) {
+    function setEcoPreset(type) {
       playSound("click");
-      currentEpochIndex = index;
-
-      document.querySelectorAll(".epoch-btn").forEach((btn, idx) => {
-        if (idx === index) {
-          btn.className = "epoch-btn px-3 py-1.5 rounded-lg font-bold bg-amber-600 text-white shadow-sm";
-        } else {
-          btn.className = "epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200";
-        }
-      });
-
-      drawGeologySimulation();
-      document.getElementById("dash-lab-status").innerText = "Aktif Mencoba";
+      if (type === "clean") {
+        document.getElementById("slider-pollution").value = 15;
+        document.getElementById("slider-green").value = 90;
+      } else {
+        document.getElementById("slider-pollution").value = 95;
+        document.getElementById("slider-green").value = 10;
+      }
+      handleEcoSliderChange();
     }
 
-    function cycleEpoch() {
-      const next = (currentEpochIndex + 1) % epochs.length;
-      setEpoch(next);
+    function drawEcoSimulation() {
+      const w = ecoCanvas.width;
+      const h = ecoCanvas.height;
+
+      // Net impact ratio (positive means clean, negative means polluted)
+      const healthRatio = Math.max(0, Math.min(1, (greenLevel * 1.2 - pollutionLevel * 0.8 + 80) / 160));
+
+      // 1. Sky Rendering
+      const skyGrad = ecoCtx.createLinearGradient(0, 0, 0, h * 0.65);
+      if (healthRatio > 0.6) {
+        skyGrad.addColorStop(0, "#0284c7"); // clear blue
+        skyGrad.addColorStop(1, "#bae6fd");
+      } else if (healthRatio > 0.35) {
+        skyGrad.addColorStop(0, "#475569"); // hazy gray
+        skyGrad.addColorStop(1, "#cbd5e1");
+      } else {
+        skyGrad.addColorStop(0, "#334155"); // smog dark
+        skyGrad.addColorStop(1, "#94a3b8");
+      }
+      ecoCtx.fillStyle = skyGrad;
+      ecoCtx.fillRect(0, 0, w, h);
+
+      // 2. Sun (dimmed or bright)
+      ecoCtx.beginPath();
+      ecoCtx.arc(w * 0.85, h * 0.22, 28, 0, Math.PI * 2);
+      ecoCtx.fillStyle = healthRatio > 0.5 ? "rgba(251, 191, 36, 0.9)" : "rgba(253, 230, 138, 0.35)";
+      ecoCtx.fill();
+
+      // 3. Smoke Clouds from Factory if pollution high
+      if (pollutionLevel > 30) {
+        const smokeCount = Math.floor(pollutionLevel / 12);
+        ecoCtx.fillStyle = "rgba(71, 85, 105, 0.55)";
+        for (let i = 0; i < smokeCount; i++) {
+          ecoCtx.beginPath();
+          const smX = w * 0.22 + i * 22;
+          const smY = h * 0.28 - (i * 12);
+          ecoCtx.arc(smX, smY, 16 + i * 5, 0, Math.PI * 2);
+          ecoCtx.fill();
+        }
+      }
+
+      // 4. Factory Chimney on Left
+      ecoCtx.fillStyle = "#334155";
+      ecoCtx.fillRect(w * 0.15, h * 0.38, w * 0.08, h * 0.27);
+      ecoCtx.fillStyle = "#1e293b";
+      ecoCtx.fillRect(w * 0.13, h * 0.35, w * 0.12, 10);
+
+      // 5. Ground (Soil)
+      const soilGrad = ecoCtx.createLinearGradient(0, h * 0.65, 0, h);
+      if (healthRatio > 0.5) {
+        soilGrad.addColorStop(0, "#15803d"); // lush green
+        soilGrad.addColorStop(1, "#14532d");
+      } else {
+        soilGrad.addColorStop(0, "#78350f"); // arid brown
+        soilGrad.addColorStop(1, "#451a03");
+      }
+      ecoCtx.fillStyle = soilGrad;
+      ecoCtx.fillRect(0, h * 0.65, w, h * 0.35);
+
+      // 6. River Running across bottom
+      ecoCtx.beginPath();
+      ecoCtx.moveTo(0, h * 0.82);
+      ecoCtx.bezierCurveTo(w * 0.3, h * 0.75, w * 0.6, h * 0.9, w, h * 0.8);
+      ecoCtx.lineTo(w, h);
+      ecoCtx.lineTo(0, h);
+      ecoCtx.closePath();
+
+      const waterGrad = ecoCtx.createLinearGradient(0, h * 0.75, 0, h);
+      if (healthRatio > 0.6) {
+        waterGrad.addColorStop(0, "rgba(6, 182, 212, 0.9)"); // crystal teal
+        waterGrad.addColorStop(1, "rgba(14, 116, 144, 0.95)");
+      } else if (healthRatio > 0.35) {
+        waterGrad.addColorStop(0, "rgba(100, 116, 139, 0.85)"); // murky slate
+        waterGrad.addColorStop(1, "rgba(51, 65, 85, 0.95)");
+      } else {
+        waterGrad.addColorStop(0, "rgba(69, 26, 3, 0.95)"); // sludge brown
+        waterGrad.addColorStop(1, "rgba(30, 27, 75, 0.95)");
+      }
+      ecoCtx.fillStyle = waterGrad;
+      ecoCtx.fill();
+
+      // 7. Trees based on Green Level
+      const treeCount = Math.floor(greenLevel / 15);
+      for (let i = 0; i < treeCount; i++) {
+        const tx = w * 0.45 + (i * 45);
+        const ty = h * 0.65;
+
+        // Trunk
+        ecoCtx.fillStyle = "#78350f";
+        ecoCtx.fillRect(tx - 3, ty - 25, 6, 25);
+
+        // Canopy
+        ecoCtx.fillStyle = healthRatio > 0.5 ? "#22c55e" : "#854d0e";
+        ecoCtx.beginPath();
+        ecoCtx.arc(tx, ty - 32, 16, 0, Math.PI * 2);
+        ecoCtx.fill();
+      }
+
+      // Update Telemetry & Text
+      const aqiVal = Math.round(20 + pollutionLevel * 2.2 - greenLevel * 0.8);
+      const aqiElem = document.getElementById("telemetry-aqi");
+      const waterElem = document.getElementById("telemetry-water");
+      const ecoElem = document.getElementById("telemetry-eco");
+      const descElem = document.getElementById("eco-desc-text");
+
+      if (aqiVal <= 50) {
+        aqiElem.innerText = `${aqiVal} (Baik / Bersih)`;
+        aqiElem.className = "font-bold text-emerald-400 ml-1";
+        waterElem.innerText = "Jernih Bebas Limbah (DO Tinggi)";
+        waterElem.className = "font-bold text-emerald-400 ml-1";
+        ecoElem.innerText = "Sangat Sehat & Lestari";
+        ecoElem.className = "font-bold text-emerald-400 ml-1";
+        descElem.innerText = "Udara sangat bersih dan segar! Sungai jernih kaya oksigen terlarut sehingga biota air berkembang subur. Pohon-pohon menyerap CO2 dengan optimal dan menahan erosi tanah.";
+      } else if (aqiVal <= 100) {
+        aqiElem.innerText = `${aqiVal} (Sedang)`;
+        aqiElem.className = "font-bold text-blue-400 ml-1";
+        waterElem.innerText = "Cukup Bersih (Kadar Normal)";
+        waterElem.className = "font-bold text-blue-400 ml-1";
+        ecoElem.innerText = "Cukup Seimbang";
+        ecoElem.className = "font-bold text-blue-400 ml-1";
+        descElem.innerText = "Kualitas lingkungan dalam batas aman toleransi, namun peningkatan emisi transportasi dan limbah cair rumah tangga harus terus ditekan melalui penghijauan kota.";
+      } else if (aqiVal <= 150) {
+        aqiElem.innerText = `${aqiVal} (Sensitif / Tidak Sehat)`;
+        aqiElem.className = "font-bold text-amber-400 ml-1";
+        waterElem.innerText = "Mulai Keruh & Berminyak";
+        waterElem.className = "font-bold text-amber-400 ml-1";
+        ecoElem.innerText = "Terganggu";
+        ecoElem.className = "font-bold text-amber-400 ml-1";
+        descElem.innerText = "Kadar polutan udara mulai mengganggu kelompok rentan (anak-anak & lansia). Air sungai mengalami kekeruhan akibat buangan deterjen dan partikel debu jalanan.";
+      } else {
+        aqiElem.innerText = `${aqiVal} (Sangat Tidak Sehat / Berbahaya)`;
+        aqiElem.className = "font-bold text-rose-400 ml-1";
+        waterElem.innerText = "Tercemar Berat / Eutrofikasi";
+        waterElem.className = "font-bold text-rose-400 ml-1";
+        ecoElem.innerText = "Kritis & Rusak";
+        ecoElem.className = "font-bold text-rose-400 ml-1";
+        descElem.innerText = "Kondisi darurat polusi! Asap tebal memicu ISPA massal, tanah kekurangan humus akibat tumpukan sampah plastik, dan air sungai berubah cokelat kehitaman berbau tak sedap.";
+      }
     }
 
     /* ========================================================
-       6. DRAG AND DROP PRAAKSARA & INTERAKSI LAB
+       6. DRAG AND DROP PENGELOLAAN LIMBAH 4R & IPAL
        ======================================================== */
-    let draggedConcept = null;
-    const matchedConcepts = new Set();
+    let draggedWaste = null;
+    const matchedWastes = new Set();
 
     function handleDragStart(e) {
-      draggedConcept = e.target.getAttribute("data-concept");
-      e.dataTransfer.setData("text/plain", draggedConcept);
+      draggedWaste = e.target.getAttribute("data-waste");
+      e.dataTransfer.setData("text/plain", draggedWaste);
       e.target.classList.add("opacity-40");
       playSound("click");
     }
@@ -1449,16 +1446,16 @@
       e.currentTarget.classList.remove("drag-over");
     }
 
-    function handleDrop(e, targetConcept) {
+    function handleDrop(e, targetWaste) {
       e.preventDefault();
       e.currentTarget.classList.remove("drag-over");
-      const concept = e.dataTransfer.getData("text/plain") || draggedConcept;
+      const waste = e.dataTransfer.getData("text/plain") || draggedWaste;
 
-      if (concept === targetConcept) {
+      if (waste === targetWaste) {
         playSound("success");
-        matchedConcepts.add(targetConcept);
+        matchedWastes.add(targetWaste);
 
-        const sourceItem = document.getElementById(`drag-${concept}`);
+        const sourceItem = document.getElementById(`drag-${waste === 'recycle' ? 'botol' : (waste === 'ipal' ? 'tekstil' : (waste === 'reuse' ? 'kaleng' : 'plastik'))}`);
         if (sourceItem) {
           sourceItem.removeAttribute("draggable");
           sourceItem.classList.remove("cursor-grab", "active:cursor-grabbing", "hover:scale-105");
@@ -1471,52 +1468,52 @@
 
         e.currentTarget.classList.add("border-emerald-500", "bg-emerald-50/50", "dark:bg-emerald-950/20");
 
-        if (matchedConcepts.size === 4) {
-          document.getElementById("dnd-status-feedback").innerHTML = "<span class='text-brand-600 font-bold'>🎉 Hebat! Semua 4 kartu artefak & konsep IPS berhasil dikelompokkan dengan tepat!</span>";
+        if (matchedWastes.size === 4) {
+          document.getElementById("dnd-status-feedback").innerHTML = "<span class='text-brand-600 font-bold'>🎉 Luar Biasa! Semua 4 limbah berhasil dikelola sesuai prinsip 4R dan IPAL!</span>";
           document.getElementById("dash-lab-status").innerText = "Selesai Tuntas";
         } else {
-          document.getElementById("dnd-status-feedback").innerText = `Bagus! ${matchedConcepts.size}/4 kartu berhasil dipasangkan.`;
+          document.getElementById("dnd-status-feedback").innerText = `Hebat! ${matchedWastes.size}/4 kartu limbah berhasil dipasangkan.`;
         }
       } else {
         playSound("error");
-        document.getElementById("dnd-status-feedback").innerHTML = "<span class='text-rose-500 font-semibold'>❌ Kurang tepat. Cermati kembali periodisasi dan corak kehidupannya!</span>";
+        document.getElementById("dnd-status-feedback").innerHTML = "<span class='text-rose-500 font-semibold'>❌ Kurang tepat. Cermati karakteristik limbah dan prinsip 4R/IPAL yang cocok!</span>";
       }
     }
 
     function resetDragAndDrop() {
       playSound("click");
-      matchedConcepts.clear();
+      matchedWastes.clear();
       const container = document.getElementById("drag-sources-container");
       container.innerHTML = `
-        <div id="drag-kjokken" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-amber-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="kjokken">
-          🐚 Kjokkenmoddinger & Abris Sous Roche
+        <div id="drag-botol" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-purple-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="recycle">
+          ♻️ Botol Plastik PET Bekas Minuman
         </div>
-        <div id="drag-beliung" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="beliung">
-          🪓 Beliung Persegi & Kapak Lonjong
+        <div id="drag-tekstil" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-cyan-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="ipal">
+          🧪 Air Limbah Pewarna Pabrik Tekstil
         </div>
-        <div id="drag-nekara" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-purple-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="nekara">
-          🥁 Nekara Perunggu & Menhir Megalitikum
+        <div id="drag-kaleng" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-amber-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="reuse">
+          🧰 Kaleng Biskuit Kosong Layak Pakai
         </div>
-        <div id="drag-gotong" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-blue-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="gotong">
-          🤝 Gotong Royong Irigasi (Interaksi Asosiatif)
+        <div id="drag-plastik" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-waste="replace">
+          🛍️ Kantong Kresek Belanja Sekali Pakai
         </div>
       `;
 
       const targets = [
-        { id: "drop-target-kjokken", text: "Masa Berburu & Mengumpulkan Makanan (Nomaden/Gua)" },
-        { id: "drop-target-beliung", text: "Masa Bercocok Tanam (Food Producing / Sedenter)" },
-        { id: "drop-target-nekara", text: "Masa Perundagian & Tradisi Megalitikum (Logam/Batu Besar)" },
-        { id: "drop-target-gotong", text: "Dinamika Sosial Masyarakat Sekitar (Kerjasama Lingkungan)" }
+        { id: "drop-target-recycle", text: "Dicacah dan dilebur kembali menjadi bijih plastik bahan baku baru" },
+        { id: "drop-target-ipal", text: "Penyaringan zat kimia beracun & netralisasi pH sebelum dialirkan ke sungai" },
+        { id: "drop-target-reuse", text: "Digunakan kembali langsung menjadi wadah perkakas tanpa diolah" },
+        { id: "drop-target-replace", text: "Beralih ke tas kain jinjing atau kantong nabati berbahan pati singkong" }
       ];
 
       targets.forEach(t => {
         const el = document.getElementById(t.id);
         el.className = "drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all";
         const slot = el.querySelector(".drop-slot");
-        if (slot) slot.innerHTML = "Letakkan kartu di sini";
+        if (slot) slot.innerHTML = "Letakkan limbah di sini";
       });
 
-      document.getElementById("dnd-status-feedback").innerText = "Cocokkan 4 kartu peninggalan/konsep ke wadah periodisasi yang pas.";
+      document.getElementById("dnd-status-feedback").innerText = "Cocokkan 4 kartu limbah ke metode pengolahan yang tepat.";
     }
 
     /* ========================================================
@@ -1525,123 +1522,123 @@
     const quizQuestions = [
       {
         id: 1,
-        question: "Berdasarkan periodisasi geologis pembentukan bumi, zaman tertua yang berlangsung sekitar 2.500 juta tahun lalu di mana kulit bumi masih sangat panas membara dan belum ada tanda-tanda kehidupan disebut zaman...",
+        question: "Suatu zat atau bahan buangan sisa kegiatan manusia dapat dikategorikan sebagai 'polutan' (bahan pencemar) apabila memenuhi kriteria berikut, KECUALI...",
         options: [
-          "Paleozoikum",
-          "Arkaekum",
-          "Mesozoikum",
-          "Neozoikum"
+          "Jumlahnya melebihi batas toleransi normal lingkungan",
+          "Berada pada waktu dan tempat yang tidak semestinya",
+          "Dapat dimanfaatkan kembali secara langsung tanpa menimbulkan bahaya racun",
+          "Menyebabkan penurunan kualitas dan daya dukung lingkungan hidup"
         ],
-        correct: 1,
-        explanation: "Zaman Arkaekum adalah zaman tertua (± 2.500 juta tahun lalu). Bumi saat itu masih berupa bola gas pijar yang sangat panas sehingga belum memungkinkan adanya kehidupan."
+        correct: 2,
+        explanation: "Bahan yang dapat dimanfaatkan langsung tanpa racun bukan polutan. Suatu zat disebut polutan jika kadarnya melebihi ambang batas, berada di tempat yang salah, atau berada pada waktu yang keliru serta merusak lingkungan."
       },
       {
         id: 2,
-        question: "Zaman Mesozoikum sering dijuluki sebagai zaman sekunder atau zaman reptil besar. Karakteristik utama perkembangan biosfer pada zaman ini adalah...",
+        question: "Gas karbon monoksida (CO) yang dihasilkan dari pembakaran bahan bakar kendaraan bermotor yang tidak sempurna sangat berbahaya bagi kesehatan manusia karena...",
         options: [
-          "Bumi didominasi oleh reptil raksasa (dinosaurus) serta awal kemunculan pohon pinus dan burung purba",
-          "Munculnya manusia modern (Homo sapiens) dan berakhirnya zaman es",
-          "Hanya ditemukan mikroorganisme bersel satu dan ubur-ubur tanpa tulang",
-          "Terjadinya kepunahan total akibat pembekuan kerak samudra purba"
+          "Dapat memicu korosi cepat pada tulang tengkorak",
+          "Memiliki daya ikat terhadap hemoglobin darah jauh lebih kuat daripada oksigen sehingga memicu asfiksia",
+          "Menyebabkan penglihatan rabun seketika pada siang hari",
+          "Mengikis enamel gigi dalam hitungan detik"
         ],
-        correct: 0,
-        explanation: "Zaman Mesozoikum (± 140 juta tahun lalu) ditandai dengan berkembang pesatnya reptil raksasa (dinosaurus, pterodactyl) dan tanaman konifer."
+        correct: 1,
+        explanation: "Gas CO berikatan dengan hemoglobin membentuk HbCO yang menghambat pengikatan dan distribusi oksigen (O2) ke seluruh jaringan tubuh, berakibat fatal (keracunan/mati lemas)."
       },
       {
         id: 3,
-        question: "Di sepanjang pesisir timur Pulau Sumatra ditemukan gundukan kulit kerang dan siput purba setinggi bermeter-meter peninggalan manusia masa praaksara. Bukti arkeologis ini dikenal dengan istilah...",
+        question: "Fenomena pemanasan global (global warming) dan perubahan iklim di bumi terutama dipicu oleh akumulasi gas pencemar udara rumah kaca berupa...",
         options: [
-          "Abris Sous Roche",
-          "Sarkofagus",
-          "Kjokkenmoddinger",
-          "Candrasa"
+          "Oksigen murni (O2) dan gas Argon (Ar)",
+          "Karbon dioksida (CO2) dan gas Metana (CH4)",
+          "Uap air murni pegunungan",
+          "Gas Nitrogen bebas (N2)"
         ],
-        correct: 2,
-        explanation: "Kjokkenmoddinger (berasal dari bahasa Denmark: kjokken = dapur, modding = sampah) adalah fosil bukit sampah dapur kerang dan siput dari masa Mesolitikum."
+        correct: 1,
+        explanation: "Gas CO2 hasil pembakaran bahan bakar fosil dan gas metana (CH4) memerangkap radiasi gelombang panas infra merah di atmosfer bumi, memicu efek rumah kaca berlebih."
       },
       {
         id: 4,
-        question: "Peralihan dari masa berburu-meramu ke masa bercocok tanam dipandang sebagai revolusi kebudayaan terbesar pada masa praaksara karena...",
+        question: "Hujan asam (acid rain) yang dapat merusak daun tanaman, mematikan organisme tanah, dan mempercepat karat pada jembatan besi disebabkan oleh pencemaran udara berupa gas...",
         options: [
-          "Manusia purba mulai menggunakan senjata api dan logam perunggu untuk berburu",
-          "Pola hidup berubah dari sekadar mengumpulkan makanan (food gathering) menjadi memproduksi makanan (food producing) serta hidup menetap",
-          "Manusia telah mengenal aksara alfabet dan mendirikan kerajaan maritim",
-          "Manusia meninggalkan daratan dan membangun peradaban terapung di atas laut"
+          "Sulfur dioksida (SO2) dan Nitrogen oksida (NOx)",
+          "Helium dan Hidrogen",
+          "Ozon di lapisan stratosfer",
+          "Uap klorofil tumbuhan"
         ],
-        correct: 1,
-        explanation: "Revolusi kebudayaan praaksara terjadi saat manusia berubah dari food gathering (nomaden) menjadi food producing (bercocok tanam & menetap/sedenter)."
+        correct: 0,
+        explanation: "Gas SO2 dan NOx dari asap pabrik dan kendaraan bereaksi dengan uap air awan membentuk asam sulfat (H2SO4) dan asam nitrat (HNO3) yang turun sebagai hujan asam berkadar pH sangat rendah."
       },
       {
         id: 5,
-        question: "Nekara perunggu berukuran besar yang banyak ditemukan di kepulauan Indonesia, seperti di Bali dan Kepulauan Selayar, pada masa perundagian umumnya berfungsi sebagai...",
+        question: "Penggunaan pupuk kimia buatan dan deterjen yang berlebihan dan terhanyut ke danau memicu ledakan gulma eceng gondok secara masif. Peristiwa pencemaran air ini dinamakan...",
         options: [
-          "Tempat menyimpan beras hasil panen ladang",
-          "Alat genderang bunyi-bunyian upacara memanggil hujan dan upacara keagamaan",
-          "Perhiasan penutup dada para prajurit perang",
-          "Mata uang resmi perdagangan antarpulau"
+          "Biomagnifikasi",
+          "Eutrofikasi",
+          "Salinisasi",
+          "Kondensasi"
         ],
         correct: 1,
-        explanation: "Nekara perunggu pada masa perundagian berfungsi sebagai instrumen musik sakral untuk upacara keagamaan dan memanggil hujan."
+        explanation: "Eutrofikasi adalah pengayaan nutrien (fosfat dan nitrat) di perairan yang memicu ledakan pertumbuhan alga/tumbuhan air secara tak terkendali hingga menguras oksigen terlarut (DO)."
       },
       {
         id: 6,
-        question: "Syarat mutlak agar suatu hubungan antarmanusia dapat dikategorikan sebagai interaksi sosial adalah harus memiliki...",
+        question: "Mengapa sampah anorganik seperti kantong plastik kresek, styrofoam, dan botol plastik menjadi ancaman terbesar bagi pencemaran tanah?",
         options: [
-          "Kontak sosial dan komunikasi dua arah",
-          "Kesesuaian status ekonomi dan jabatan yang sama",
-          "Pertemuan tatap muka langsung tanpa perantara media",
-          "Kesamaan suku bangsa dan bahasa daerah"
+          "Karena dapat menyuburkan tanah terlalu cepat",
+          "Karena tidak dapat diurai secara hayati oleh mikroorganisme tanah (non-biodegradable) dan bertahan ratusan tahun",
+          "Karena mudah terbakar sendiri di dalam tanah tanpa api",
+          "Karena mengeluarkan gas oksigen yang membunuh akar tanaman"
         ],
-        correct: 0,
-        explanation: "Syarat terjadinya interaksi sosial menurut sosiologi adalah adanya kontak sosial dan proses komunikasi timbal balik."
+        correct: 1,
+        explanation: "Sampah plastik dan polimer sintetis bersifat non-biodegradable (tidak dapat diurai oleh bakteri pengurai), sehingga menghalangi peresapan air dan sirkulasi udara di dalam tanah."
       },
       {
         id: 7,
-        question: "Warga desa di lereng Gunung Bromo bersama-sama membersihkan saluran air irigasi sawah terasering secara sukarela tanpa upah. Pola interaksi sosial ini mencerminkan bentuk...",
+        question: "Sebuah pabrik tekstil diwajibkan membangun IPAL sebelum membuang air sisa pewarnaan kain ke sungai. Fungsi utama dari IPAL adalah...",
         options: [
-          "Disosiatif berupa kontravensi",
-          "Asosiatif berupa kerja sama (gotong royong)",
-          "Disosiatif berupa persaingan kompetitif",
-          "Akomodasi paksaan (koersi)"
+          "Menyaring dan menetralkan kadar racun serta zat kimia berbahaya dalam air limbah agar memenuhi baku mutu lingkungan",
+          "Mengubah air limbah secara instan menjadi air mineral kemasan siap minum",
+          "Menimbun limbah beracun ke dalam tanah tanpa pengolahan",
+          "Mengalirkan limbah langsung ke saluran sawah petani sekitar"
         ],
-        correct: 1,
-        explanation: "Gotong royong membersihkan saluran air irigasi adalah bentuk interaksi sosial asosiatif yang mengarah pada persatuan dan keharmonisan masyarakat."
+        correct: 0,
+        explanation: "IPAL (Instalasi Pengolahan Air Limbah) berfungsi mengolah air buangan industri secara fisik, kimiawi, dan biologis agar aman dan ramah lingkungan saat dibuang kembali ke sungai."
       },
       {
         id: 8,
-        question: "Masyarakat yang mendiami kawasan dataran tinggi umumnya mengembangkan kegiatan ekonomi berbasis perkebunan teh, kopi, dan sayuran hortikultura. Hal ini membuktikan bahwa...",
+        question: "Aisyah selalu membawa tas kain belanja sendiri saat ke pasar dan membawa botol tumbler minum ke sekolah. Tindakan Aisyah merupakan penerapan prinsip 4R jenis...",
         options: [
-          "Kondisi fisik geografis lingkungan memengaruhi corak mata pencaharian dan kebudayaan masyarakat",
-          "Masyarakat pegunungan tidak memiliki keterampilan berdagang",
-          "Dataran tinggi tidak dapat ditanami tanaman pangan jenis apa pun",
-          "Semua wilayah di Indonesia memiliki potensi alam yang seragam"
+          "Recycle (Mendaur ulang limbah)",
+          "Reduce (Mengurangi timbulan sampah sejak awal)",
+          "Reboisasi (Menanam kembali hutan)",
+          "Remediasi (Pembersihan tanah)"
         ],
-        correct: 0,
-        explanation: "Bentang alam dan kondisi iklim mikro secara langsung memengaruhi cara manusia beradaptasi dalam memenuhi kebutuhan hidupnya."
+        correct: 1,
+        explanation: "Reduce adalah tindakan proaktif mengurangi timbulan sampah plastik sekali pakai dengan menggunakan wadah pakai ulang (tumbler dan tas belanja kain)."
       },
       {
         id: 9,
-        question: "Inti permasalahan ekonomi yang memicu perlunya manusia bertindak bijak dalam memanfaatkan lingkungan sekitar adalah adanya 'Kelangkaan' (Scarcity), yaitu...",
+        question: "Pemanfaatan mikroorganisme bakteri atau tanaman tertentu untuk membersihkan dan menetralkan zat pencemar berbahaya di lingkungan tanah atau air disebut...",
         options: [
-          "Jumlah uang yang beredar di masyarakat melebihi jumlah barang yang dijual",
-          "Kebutuhan manusia tidak terbatas, sedangkan sumber daya pemenuh kebutuhan jumlahnya terbatas",
-          "Ketiadaan teknologi untuk mengolah hasil tambang minyak bumi",
-          "Tingginya angka pengangguran akibat bencana alam gempa bumi"
+          "Bioremediasi",
+          "Erosi",
+          "Abrasi",
+          "Urbanisasi"
         ],
-        correct: 1,
-        explanation: "Kelangkaan (scarcity) adalah kesenjangan antara kebutuhan manusia yang tanpa batas dengan ketersediaan alat pemuas kebutuhan yang terbatas."
+        correct: 0,
+        explanation: "Bioremediasi adalah proses pemulihan lingkungan tercemar dengan memanfaatkan agen biologis (mikroorganisme bakteri, jamur, atau tanaman) untuk memecah zat polutan beracun."
       },
       {
         id: 10,
-        question: "Konsep Pembangunan Berkelanjutan (Sustainable Development / SDGs) dalam memanfaatkan kekayaan lingkungan sekitar bertujuan untuk...",
+        question: "Pencemaran lingkungan sekitar pada akhirnya akan memengaruhi interaksi sosial dan kesejahteraan ekonomi masyarakat. Contoh dampak sosial-ekonomi nyata dari pencemaran sungai adalah...",
         options: [
-          "Mengeksploitasi seluruh tambang mineral secepat mungkin demi laba devisa instan",
-          "Memenuhi kebutuhan generasi masa kini tanpa mengorbankan hak dan kemampuan generasi masa depan untuk memenuhi kebutuhannya",
-          "Menghentikan seluruh aktivitas pembangunan pabrik dan kembali ke zaman batu",
-          "Menyerahkan pengelolaan hutan secara eksklusif kepada perusahaan asing"
+          "Pendapatan nelayan tangkap ikan air tawar merosot drastis dan biaya pengobatan warga akibat penyakit kulit meningkat",
+          "Harga beras di pasar turun drastis tanpa sebab",
+          "Terbukanya lapangan kerja penambangan pasir secara gratis",
+          "Masyarakat berpindah menjadi petani garam di pegunungan"
         ],
-        correct: 1,
-        explanation: "Pembangunan berkelanjutan adalah pembangunan yang memenuhi kebutuhan saat ini dengan tetap menjaga kelestarian ekologis bagi generasi masa depan."
+        correct: 0,
+        explanation: "Pencemaran sungai menimbulkan kerugian ekonomi nyata: hasil tangkapan ikan mati (nelayan merugi), biaya pengadaan air bersih melonjak, dan pengeluaran kesehatan akibat penyakit menular meningkat."
       }
     ];
 
@@ -1669,7 +1666,7 @@
 
         qBox.innerHTML = `
           <div class="flex items-center justify-between">
-            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300">
+            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
               Soal ${qNum} dari 10 • 10 Poin
             </span>
             <span id="answered-indicator-${q.id}" class="text-xs text-slate-400 font-medium">Belum Dijawab</span>
@@ -1720,7 +1717,7 @@
 
       const finalScore = Math.round((correctCount / quizQuestions.length) * 100);
 
-      // Sinkronisasi ke SCORM 1.2
+      // Sinkronisasi SCORM 1.2
       ScormManager.setEvaluationScore(finalScore);
 
       // Tampilkan hasil
@@ -1841,8 +1838,8 @@
       initTheme();
       ScormManager.init();
       renderQuizQuestions();
-      resizeGeologyCanvas();
-      drawGeologySimulation();
+      resizeEcoCanvas();
+      drawEcoSimulation();
     });
   </script>
 </body>
