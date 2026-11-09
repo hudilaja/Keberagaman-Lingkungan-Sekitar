@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Pembelajaran IPS SMP: Keberagaman Lingkungan Sekitar (SCORM 1.2)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#16a34a',
+              600: '#15803d',
+              700: '#166534',
+              800: '#14532d',
+              900: '#052e16',
+            },
+            earth: {
+              50: '#fdf8f6',
+              100: '#f2e8e5',
+              200: '#eaddd7',
+              300: '#e0cec7',
+              400: '#d2bab0',
+              500: '#b5836f',
+              600: '#9d6753',
+              700: '#804f3f',
+              800: '#673f33',
+              900: '#54342a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(150, 150, 150, 0.1);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.4);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(100, 116, 139, 0.7);
+    }
+
+    /* 3D Flip Card Styles */
+    .perspective {
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1rem;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Drag and Drop Styling */
+    .drag-target.drag-over {
+      border-color: #16a34a !important;
+      background-color: rgba(22, 163, 74, 0.12) !important;
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
+
+  <!-- TOP HEADER / NAVBAR -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-earth-600 via-amber-600 to-brand-600 flex items-center justify-center text-white shadow-md shadow-amber-600/20 font-bold text-xl">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">IPS EduLearn: Keberagaman Lingkungan Sekitar</h1>
+            <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">IPS SMP Kelas 7 • Kurikulum Merdeka (Kemendikbudristek 2023) • Standar SCORM 1.2</p>
+          </div>
+        </div>
+
+        <!-- Right Controls: SCORM Status Badge, Sound, Theme Switcher -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <!-- SCORM Connection Badge -->
+          <div id="scorm-status-badge" class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-300 dark:border-amber-800" title="Status koneksi SCORM LMS">
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+            <span id="scorm-status-text" class="hidden xs:inline">Mengecek SCORM...</span>
+          </div>
+
+          <!-- Sound Effects Toggle -->
+          <button id="btn-sound-toggle" onclick="toggleSound()" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" title="Beralih Suara (Efek Audio)">
+            <svg id="icon-sound-on" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+            <svg id="icon-sound-off" class="w-5 h-5 hidden text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+            </svg>
+          </button>
+
+          <!-- Theme Dark/Light Toggle -->
+          <button id="btn-theme-toggle" onclick="toggleTheme()" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" title="Ubah Tema Gelap/Terang">
+            <!-- Sun icon -->
+            <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon icon -->
+            <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Desktop & Mobile Scrollable) -->
+      <nav class="flex space-x-1 sm:space-x-3 border-t border-slate-100 dark:border-slate-800/80 py-2 overflow-x-auto no-scrollbar" aria-label="Tabs">
+        <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="tab-btn active flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap bg-brand-500 text-white shadow-sm shadow-brand-500/30">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span>Dashboard</span>
+        </button>
+
+        <button onclick="switchTab('modul')" id="tab-btn-modul" class="tab-btn flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>Modul Materi</span>
+        </button>
+
+        <button onclick="switchTab('simulasi')" id="tab-btn-simulasi" class="tab-btn flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Simulasi Interaktif</span>
+        </button>
+
+        <button onclick="switchTab('evaluasi')" id="tab-btn-evaluasi" class="tab-btn flex items-center space-x-2 px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+          <span>Tes Pemahaman</span>
+          <span id="badge-score" class="ml-1 px-1.5 py-0.2 rounded text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hidden">0/100</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: DASHBOARD -->
+    <!-- ========================================== -->
+    <section id="content-dashboard" class="tab-content block space-y-8 animate-fadeIn">
+      <!-- Welcome Hero Banner -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-800 via-teal-700 to-amber-700 p-6 sm:p-10 text-white shadow-xl shadow-brand-900/10">
+        <div class="relative z-10 max-w-3xl space-y-4">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-semibold tracking-wide uppercase text-amber-100">
+            <span>Buku IPS Kelas 7 Edisi Revisi 2023</span>
+            <span>•</span>
+            <span>Kemendikbudristek</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+            Selamat Datang di Lab Sosial, <span id="student-display-name" class="underline decoration-amber-300 decoration-wavy">Siswa Pembelajar</span>!
+          </h2>
+          <p class="text-sm sm:text-base text-emerald-50/90 leading-relaxed">
+            Eksplorasi keterkaitan antara proses pembentukan bumi, corak kehidupan masyarakat masa praaksara, dinamika interaksi sosial, hingga pentingnya pelestarian alam dan pembangunan berkelanjutan (*Sustainable Development*) di lingkungan sekitarmu.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <button onclick="switchTab('modul')" class="inline-flex items-center space-x-2 bg-white text-emerald-800 hover:bg-amber-50 px-5 py-2.5 rounded-xl font-bold text-sm shadow-md transition-transform hover:-translate-y-0.5">
+              <span>Mulai Pelajari Materi</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+            <button onclick="switchTab('simulasi')" class="inline-flex items-center space-x-2 bg-emerald-950/40 hover:bg-emerald-950/60 border border-white/30 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">
+              <span>Buka Timeline Geologis & Lab Interaktif</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Decorative Background Shapes -->
+        <div class="absolute -right-12 -bottom-12 w-80 h-80 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute right-1/4 -top-12 w-64 h-64 bg-emerald-400/20 rounded-full blur-3xl pointer-events-none"></div>
+      </div>
+
+      <!-- Quick Metrics Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Metric 1: SCORM Status -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status SCORM</span>
+            <span id="metric-scorm-icon" class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </span>
+          </div>
+          <div class="mt-3">
+            <h4 id="dash-lesson-status" class="text-xl font-bold text-slate-800 dark:text-white capitalize">incomplete</h4>
+            <p class="text-xs text-slate-500 mt-1">Standar KKM Kelulusan: <span class="font-semibold text-brand-600">75 / 100</span></p>
+          </div>
+        </div>
+
+        <!-- Metric 2: Skor Akhir -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Skor Evaluasi</span>
+            <span class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </span>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline space-x-1">
+              <h4 id="dash-score-val" class="text-2xl font-black text-slate-800 dark:text-white">0</h4>
+              <span class="text-xs text-slate-500">/ 100</span>
+            </div>
+            <p id="dash-score-status" class="text-xs text-slate-500 mt-1">Belum mengerjakan tes</p>
+          </div>
+        </div>
+
+        <!-- Metric 3: Progres Bacaan -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Progres Belajar</span>
+            <span class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </span>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-center justify-between text-sm font-semibold mb-1">
+              <span id="dash-reading-pct" class="text-slate-800 dark:text-white">0%</span>
+              <span class="text-xs text-slate-400">4 Sub-tema</span>
+            </div>
+            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+              <div id="dash-reading-bar" class="bg-brand-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 4: Tantangan Interaktif -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Lab Praaksara</span>
+            <span class="p-2 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </span>
+          </div>
+          <div class="mt-3">
+            <h4 id="dash-lab-status" class="text-xl font-bold text-slate-800 dark:text-white">Belum Dicoba</h4>
+            <p class="text-xs text-slate-500 mt-1">Timeline Geologis & Drag-and-drop artefak</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indikator Ketercapaian Pembelajaran (IKTP) -->
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Indikator Ketercapaian Tujuan Pembelajaran (IKTP)
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Capaian kompetensi esensial Tema 02 IPS Kelas 7 Edisi 2023:</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+            <div class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 text-brand-600 dark:text-brand-400 shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">1. Periodisasi Geologis Sejarah Pembentukan Bumi</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Mampu membedakan karakteristik 4 zaman geologis: Arkaekum, Paleozoikum, Mesozoikum, dan Neozoikum (Tersier & Kuarter).</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+            <div class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 text-brand-600 dark:text-brand-400 shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">2. Kehidupan Masyarakat Masa Praaksara</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Menganalisis corak bertahan hidup berburu-meramu, bercocok tanam, hingga masa perundagian serta bukti arkeologisnya.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+            <div class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 text-brand-600 dark:text-brand-400 shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">3. Interaksi Sosial & Pengaruh Kondisi Geografis</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Mengidentifikasi syarat interaksi sosial, bentuk asosiatif/disosiatif, dan pengaruh bentang alam terhadap mata pencaharian.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+            <div class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 text-brand-600 dark:text-brand-400 shrink-0">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <h5 class="text-sm font-semibold text-slate-800 dark:text-slate-200">4. Kelangkaan & Pembangunan Berkelanjutan (SDGs)</h5>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Menjelaskan konsep kelangkaan sumber daya serta penerapan 3 pilar utama pembangunan berkelanjutan bagi generasi masa depan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roadmap 3 Langkah Belajar -->
+      <div class="bg-gradient-to-br from-slate-100 to-amber-50 dark:from-slate-900 dark:to-slate-800/80 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700/60">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Alur Belajar Mandiri:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-white dark:bg-slate-800/90 rounded-xl p-4 shadow-sm border border-slate-200/80 dark:border-slate-700">
+            <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 mb-2">Langkah 1</span>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Buka Modul Teori</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Pelajari 4 era geologi bumi, kehidupan praaksara di Indonesia, serta interaksi sosial di masyarakat sekitar.</p>
+          </div>
+          <div class="bg-white dark:bg-slate-800/90 rounded-xl p-4 shadow-sm border border-slate-200/80 dark:border-slate-700">
+            <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 mb-2">Langkah 2</span>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Jalankan Simulator Interaktif</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Geser slider timeline geologis Canvas 2D dan cocokkan artefak praaksara ke wadah periodisasi yang pas.</p>
+          </div>
+          <div class="bg-white dark:bg-slate-800/90 rounded-xl p-4 shadow-sm border border-slate-200/80 dark:border-slate-700">
+            <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 mb-2">Langkah 3</span>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Evaluasi Tes SCORM</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Tuntaskan 10 soal evaluasi. Raih nilai minimal 75 agar SCORM LMS mencatat status Anda sebagai <strong>passed</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: MODUL MATERI -->
+    <!-- ========================================== -->
+    <section id="content-modul" class="tab-content hidden space-y-8 animate-fadeIn">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-4">
+        <div>
+          <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Modul IPS Terpadu Kelas 7</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Tema 02: Keberagaman Lingkungan Sekitar</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Berdasarkan Buku Siswa IPS Kelas 7 Edisi Revisi Kemendikbudristek 2023.</p>
+        </div>
+        <!-- Topic Quick Jump Filter -->
+        <div class="flex flex-wrap gap-2 text-xs">
+          <button onclick="scrollToTopic('topik-geologi')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">1. Geologis Bumi</button>
+          <button onclick="scrollToTopic('topik-praaksara')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">2. Masa Praaksara</button>
+          <button onclick="scrollToTopic('topik-interaksi')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">3. Interaksi Sosial</button>
+          <button onclick="scrollToTopic('topik-sdg')" class="px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-brand-500 hover:text-white transition-colors">4. Kelangkaan & SDGs</button>
+        </div>
+      </div>
+
+      <!-- 1. Periodisasi Geologis Sejarah Pembentukan Bumi -->
+      <div id="topik-geologi" class="space-y-4">
+        <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">1</span>
+          Berkenalan dengan Alam: Periodisasi Geologis Pembentukan Bumi
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          Menurut ilmu geologi, bumi terbentuk sekitar 4,5 miliar tahun lalu dan mengalami 4 tahapan zaman utama:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Zaman Arkaekum -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">± 2.500 Juta Tahun Lalu</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Arkaekum</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Zaman tertua. Kerak bumi masih sangat panas membara, rotasi cepat, atmosfer dipenuhi gas vulkanik beracun.
+            </p>
+            <div class="mt-3 text-[11px] font-semibold text-rose-600 dark:text-rose-400">
+              ⚡ Belum ada tanda-tanda kehidupan sama sekali.
+            </div>
+          </div>
+
+          <!-- Zaman Paleozoikum -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">± 340 Juta Tahun Lalu</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Paleozoikum</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Dikenal sebagai zaman primer (hidup tua). Suhu bumi mulai mendingin dan curah hujan sangat tinggi menciptakan samudra.
+            </p>
+            <div class="mt-3 text-[11px] font-semibold text-blue-600 dark:text-blue-400">
+              🐟 Muncul mikroorganisme, ubur-ubur, ikan purba, amfibi, dan lumut.
+            </div>
+          </div>
+
+          <!-- Zaman Mesozoikum -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">± 140 Juta Tahun Lalu</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Mesozoikum</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Zaman sekunder (hidup pertengahan) atau zaman reptil raksasa (*Dinosaurus, Atlantosaurus, Tyrannosaurus*).
+            </p>
+            <div class="mt-3 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
+              🦖 Didominasi reptil raksasa serta awal munculnya pohon runjung pinus.
+            </div>
+          </div>
+
+          <!-- Zaman Neozoikum -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:border-amber-500 transition-all">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">± 60 Juta Tahun Lalu - Kini</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Zaman Neozoikum</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Zaman hidup baru, terbagi atas Zaman Tersier (berkembangnya hewan mamalia menyusui) dan Zaman Kuarter.
+            </p>
+            <div class="mt-3 text-[11px] font-semibold text-purple-600 dark:text-purple-400">
+              🚶 Munculnya manusia purba hingga manusia modern (*Homo sapiens*).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Kehidupan Masyarakat Masa Praaksara -->
+      <div id="topik-praaksara" class="space-y-4 pt-4">
+        <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">2</span>
+          Mengenal Masyarakat Masa Praaksara di Lingkungan Nusantara
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          Zaman Praaksara (*nirleka*) adalah masa sebelum manusia mengenal tulisan. Corak kehidupan manusia praaksara berkembang melalui tiga tahapan besar:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Tahap 1: Berburu & Meramu -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+            <span class="px-2 py-0.5 rounded text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">Fase 1</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Berburu & Mengumpulkan Makanan</h4>
+            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-3 list-disc list-inside">
+              <li><strong>Pola Hidup:</strong> Bergantung penuh pada alam (*food gathering*), hidup berpindah-pindah (*nomaden*).</li>
+              <li><strong>Tempat Tinggal:</strong> Gua-gua payung karang di tepi sungai atau pantai (*abris sous roche*).</li>
+              <li><strong>Alat Peninggalan:</strong> Kapak perimbas (*chopper*), alat serpih (*flakes*), dan alat dari tulang binatang.</li>
+              <li><strong>Bukti Nyata:</strong> Fosil bukit kerang sampah dapur (*kjokkenmoddinger*) setinggi bermeter-meter di pesisir timur Sumatra.</li>
+            </ul>
+          </div>
+
+          <!-- Tahap 2: Bercocok Tanam -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+            <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Fase 2</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Bercocok Tanam (Food Producing)</h4>
+            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-3 list-disc list-inside">
+              <li><strong>Revolusi Kebudayaan:</strong> Berubah dari sekadar mencari makanan menjadi memproduksi makanan (*food producing*).</li>
+              <li><strong>Pola Hidup:</strong> Menetap (*sedenter*) di perkampungan dekat sumber air, membabat hutan untuk berladang/berkebun.</li>
+              <li><strong>Peralatan Halus:</strong> Beliung persegi untuk memotong kayu, kapak lonjong, dan gerabah tanah liat.</li>
+              <li><strong>Sistem Sosial:</strong> Mulai mengenal pembagian kerja dan kepemimpinan desa (*primus inter pares*).</li>
+            </ul>
+          </div>
+
+          <!-- Tahap 3: Masa Perundagian -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+            <span class="px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">Fase 3</span>
+            <h4 class="text-base font-bold text-slate-900 dark:text-white mt-2">Masa Perundagian (Megalitikum & Logam)</h4>
+            <ul class="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 mt-3 list-disc list-inside">
+              <li><strong>Kata 'Undagi':</strong> Berarti golongan terampil atau ahli dalam mencetak logam perunggu dan besi.</li>
+              <li><strong>Peralatan Logam:</strong> Nekara perunggu (genderang upacara hujan), moko, kapak corong (*candrasa*), dan bejana.</li>
+              <li><strong>Tradisi Megalitikum:</strong> Menhir (tugu batu pemujaan roh nenek moyang), dolmen (meja batu sajen), sarkofagus (peti mati batu).</li>
+              <li><strong>Kepercayaan:</strong> Berkembangnya sistem religi animisme dan dinamisme.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Interaksi Sosial & Pengaruh Kondisi Geografis Lingkungan -->
+      <div id="topik-interaksi" class="space-y-4 pt-4">
+        <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">3</span>
+          Interaksi Sosial & Karakteristik Masyarakat Berdasarkan Bentang Alam
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Interaksi Sosial Asosiatif vs Disosiatif -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+            <h4 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 text-brand-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              Syarat & Bentuk Interaksi Sosial
+            </h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Interaksi sosial adalah hubungan timbal balik antara individu dengan individu, individu dengan kelompok, atau antarkelompok. Terjadi jika memenuhi <strong>Kontak Sosial</strong> dan <strong>Komunikasi</strong>.
+            </p>
+            <div class="mt-3 space-y-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                <span class="font-bold text-emerald-700 dark:text-emerald-300">Bentuk Asosiatif (Mengarah pada persatuan):</span>
+                <p class="text-slate-600 dark:text-slate-400 mt-0.5">Kerja sama/gotong royong, akomodasi (penyelesaian damai), asimilasi, dan akulturasi budaya.</p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800">
+                <span class="font-bold text-rose-700 dark:text-rose-300">Bentuk Disosiatif (Mengarah pada perpecahan):</span>
+                <p class="text-slate-600 dark:text-slate-400 mt-0.5">Persaingan (kompetisi sehat), kontravensi (ketidaksukaan tersembunyi), dan pertentangan/konflik.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pengaruh Bentang Alam -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+            <h4 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 text-amber-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Adaptasi Lingkungan Fisik & Mata Pencaharian
+            </h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+              Kondisi geografis membentuk kebudayaan dan corak ekonomi masyarakat di Indonesia:
+            </p>
+            <div class="mt-3 space-y-2 text-xs">
+              <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>1. Wilayah Pesisir/Pantai:</strong> Dominan berprofesi sebagai nelayan, petani garam, budidaya tambak, serta pengolah ikan asin. Pola rumah berderet sejajar garis pantai.
+              </div>
+              <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>2. Dataran Rendah:</strong> Pusat pemukiman padat, pertanian sawah irigasi, perdagangan, industri pabrik, dan pusat transportasi perkotaan.
+              </div>
+              <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <strong>3. Dataran Tinggi/Pegunungan:</strong> Suhu dingin sejuk memicu perkebunan teh, kopi, sayur mayur hortikultura, pariwisata alam, dan pola terasering sawah.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Kelangkaan Sumber Daya & Pembangunan Berkelanjutan (SDGs) -->
+      <div id="topik-sdg" class="space-y-4 pt-4">
+        <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold">4</span>
+          Kelangkaan Ekonomi & Pembangunan Berkelanjutan (SDGs)
+        </h3>
+
+        <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-900 dark:to-slate-800/80 border border-emerald-200 dark:border-slate-700 space-y-3">
+          <h4 class="text-base font-bold text-emerald-800 dark:text-emerald-300">Pilar Pembangunan Berkelanjutan (*Sustainable Development*)</h4>
+          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            Pembangunan berkelanjutan adalah upaya sadar dan terencana yang memadukan aspek <strong>lingkungan hidup, sosial, dan ekonomi</strong> ke dalam strategi pembangunan untuk menjamin keutuhan lingkungan hidup serta keselamatan, kemampuan, dan mutu hidup generasi masa kini dan masa depan.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-xs">
+            <div class="bg-white/80 dark:bg-slate-800 p-3 rounded-xl border border-emerald-100 dark:border-slate-700">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">1. Pilar Ekologis (Lingkungan)</span>
+              <p class="text-slate-600 dark:text-slate-400 mt-1">Konservasi keanekaragaman hayati, reboisasi, pengolahan limbah ramah lingkungan, dan pencegahan polusi.</p>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800 p-3 rounded-xl border border-emerald-100 dark:border-slate-700">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">2. Pilar Ekonomi</span>
+              <p class="text-slate-600 dark:text-slate-400 mt-1">Efisiensi penggunaan sumber daya alam yang langka dan mencegah eksploitasi berlebihan yang merusak alam.</p>
+            </div>
+            <div class="bg-white/80 dark:bg-slate-800 p-3 rounded-xl border border-emerald-100 dark:border-slate-700">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">3. Pilar Sosial Budaya</span>
+              <p class="text-slate-600 dark:text-slate-400 mt-1">Pemberdayaan kearifan lokal masyarakat adat (*local wisdom*) dalam menjaga hutan dan sumber mata air.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flashcards Istilah Kunci (Interactive Flip) -->
+      <div class="pt-4 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            Kartu Pintar: Istilah Kunci Tema 2 (Ketuk untuk Membalik)
+          </h3>
+          <span class="text-xs text-slate-400">Klik kartu untuk melihat definisi</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Flip Card 1: Kjokkenmoddinger -->
+          <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
+            <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
+              <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
+                <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider">Arkeologi Praaksara</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Kjokkenmoddinger</h5>
+                <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
+              </div>
+              <div class="flip-card-back bg-gradient-to-br from-amber-700 to-amber-900 text-white p-4 flex flex-col items-center justify-center text-center">
+                <p class="text-xs leading-relaxed">Fosil bukit sampah dapur dari kulit kerang dan siput purba yang membatu setinggi bermeter-meter di tepi pantai peninggalan zaman Mesolitikum.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flip Card 2: Abris Sous Roche -->
+          <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
+            <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
+              <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
+                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Hunian Purba</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Abris Sous Roche</h5>
+                <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
+              </div>
+              <div class="flip-card-back bg-gradient-to-br from-blue-700 to-indigo-900 text-white p-4 flex flex-col items-center justify-center text-center">
+                <p class="text-xs leading-relaxed">Gua-gua ceruk batu karang yang dijadikan tempat berteduh dan hunian semi-permanen oleh manusia praaksara dari terpaan cuaca dan serangan predator.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flip Card 3: Kelangkaan -->
+          <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
+            <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
+              <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
+                <span class="text-[10px] font-bold text-rose-600 uppercase tracking-wider">Ekonomi Lingkungan</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Kelangkaan (Scarcity)</h5>
+                <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
+              </div>
+              <div class="flip-card-back bg-gradient-to-br from-rose-700 to-pink-900 text-white p-4 flex flex-col items-center justify-center text-center">
+                <p class="text-xs leading-relaxed">Kondisi ketidakseimbangan di mana kebutuhan manusia jumlahnya tidak terbatas, sementara ketersediaan sumber daya pemenuh kebutuhan sifatnya terbatas.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flip Card 4: Menhir & Megalitikum -->
+          <div class="flip-card perspective h-44 cursor-pointer" onclick="toggleFlip(this)">
+            <div class="flip-card-inner border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm">
+              <div class="flip-card-front bg-white dark:bg-slate-900 p-4 flex flex-col items-center justify-center text-center">
+                <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Religi Purba</span>
+                <h5 class="text-base font-bold text-slate-800 dark:text-white mt-1">Menhir & Dolmen</h5>
+                <p class="text-[11px] text-slate-400 mt-2">Ketuk untuk membalik ↻</p>
+              </div>
+              <div class="flip-card-back bg-gradient-to-br from-emerald-700 to-teal-900 text-white p-4 flex flex-col items-center justify-center text-center">
+                <p class="text-xs leading-relaxed">Monumen batu besar zaman Megalitikum; Menhir berupa tiang batu pemujaan roh leluhur, sedangkan Dolmen adalah meja batu pelataran sajen sesaji.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button to Next Step -->
+      <div class="flex justify-end pt-4">
+        <button onclick="switchTab('simulasi')" class="inline-flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all">
+          <span>Lanjut ke Laboratorium Simulasi Interaktif</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: SIMULASI INTERAKTIF -->
+    <!-- ========================================== -->
+    <section id="content-simulasi" class="tab-content hidden space-y-8 animate-fadeIn">
+      <!-- Section Header -->
+      <div class="pb-4 border-b border-slate-200 dark:border-slate-800">
+        <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Laboratorium Virtual IPS</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Simulator Garis Waktu Geologis & Artefak Praaksara</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Eksperimen langsung memahami skala waktu geologis bumi serta klasifikasi artefak peninggalan manusia purba.</p>
+      </div>
+
+      <!-- SIMULASI 1: Canvas HTML5 Visualisasi Garis Waktu Geologi Bumi -->
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-7 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Eksperimen 1: Garis Waktu Evolusi Geologis Bumi (Canvas 2D)
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Pilih era geologis di bawah atau gunakan tombol navigasi untuk mengamati transformasi kondisi planet bumi.</p>
+          </div>
+
+          <!-- Epoch Buttons -->
+          <div class="flex flex-wrap gap-1.5 text-xs">
+            <button onclick="setEpoch(0)" id="btn-epoch-0" class="epoch-btn px-3 py-1.5 rounded-lg font-bold bg-amber-600 text-white shadow-sm">1. Arkaekum</button>
+            <button onclick="setEpoch(1)" id="btn-epoch-1" class="epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200">2. Paleozoikum</button>
+            <button onclick="setEpoch(2)" id="btn-epoch-2" class="epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200">3. Mesozoikum</button>
+            <button onclick="setEpoch(3)" id="btn-epoch-3" class="epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200">4. Neozoikum</button>
+          </div>
+        </div>
+
+        <!-- Canvas Container -->
+        <div class="relative w-full rounded-2xl bg-slate-950 overflow-hidden border border-slate-800 shadow-inner flex flex-col items-center">
+          <canvas id="geologyCanvas" width="900" height="340" class="w-full max-w-full h-auto"></canvas>
+          
+          <!-- Live Telemetry Bar -->
+          <div class="w-full bg-slate-900/90 border-t border-slate-800 px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex flex-wrap items-center gap-4">
+              <div>
+                <span class="text-slate-400">Nama Zaman:</span>
+                <span id="geo-name" class="font-bold text-amber-400 ml-1">Arkaekum</span>
+              </div>
+              <div>
+                <span class="text-slate-400">Kurun Waktu:</span>
+                <span id="geo-time" class="font-bold text-emerald-400 ml-1">± 2.500 Juta Tahun Lalu</span>
+              </div>
+              <div class="hidden md:block">
+                <span class="text-slate-400">Status Kehidupan:</span>
+                <span id="geo-life" class="font-bold text-rose-400 ml-1">Nir-kehidupan (Bumi Panas Membara)</span>
+              </div>
+            </div>
+
+            <button onclick="cycleEpoch()" class="bg-brand-600 hover:bg-brand-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
+              Zaman Berikutnya ➜
+            </button>
+          </div>
+        </div>
+
+        <!-- Epoch Educational Description -->
+        <div id="geo-desc-box" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+          <strong class="text-amber-600 dark:text-amber-400">Kondisi Fisiografis & Lingkungan:</strong>
+          <span id="geo-desc-text">Zaman tertua dalam sejarah bumi. Kerak bumi masih berupa cairan lava membara dengan suhu yang teramat panas. Terjadi hujan meteorit secara konstan dan gas atmosfer dipenuhi uap belerang serta karbon dioksida. Belum ada tanda-tanda organisme hidup.</span>
+        </div>
+      </div>
+
+      <!-- SIMULASI 2: Drag & Drop Klasifikasi Peninggalan Praaksara & Konsep IPS -->
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-7 shadow-sm space-y-6">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            Eksperimen 2: Tantangan Drag & Drop Peninggalan Praaksara & Interaksi Lingkungan
+          </h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Tarik (drag) kartu konsep di bawah dan tempatkan (drop) ke wadah kategori yang paling tepat!</p>
+        </div>
+
+        <!-- Draggable Source Cards -->
+        <div class="space-y-2">
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Kartu Artefak & Peristiwa Tersedia:</span>
+          <div id="drag-sources-container" class="flex flex-wrap gap-3 p-4 rounded-2xl bg-slate-100 dark:bg-slate-800/50 min-h-[70px] border border-slate-200 dark:border-slate-700">
+            <!-- Item 1: Kjokkenmoddinger -->
+            <div id="drag-kjokken" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-amber-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="kjokken">
+              🐚 Kjokkenmoddinger & Abris Sous Roche
+            </div>
+            <!-- Item 2: Beliung Persegi -->
+            <div id="drag-beliung" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="beliung">
+              🪓 Beliung Persegi & Kapak Lonjong
+            </div>
+            <!-- Item 3: Nekara Perunggu -->
+            <div id="drag-nekara" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-purple-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="nekara">
+              🥁 Nekara Perunggu & Menhir Megalitikum
+            </div>
+            <!-- Item 4: Gotong Royong Petani -->
+            <div id="drag-gotong" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-blue-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="gotong">
+              🤝 Gotong Royong Irigasi (Interaksi Asosiatif)
+            </div>
+          </div>
+        </div>
+
+        <!-- Drop Targets Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Target 1: Berburu & Meramu -->
+          <div id="drop-target-kjokken" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'kjokken')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-amber-600 uppercase">Kategori A</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Masa Berburu & Mengumpulkan Makanan (Nomaden/Gua)</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          </div>
+
+          <!-- Target 2: Bercocok Tanam -->
+          <div id="drop-target-beliung" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'beliung')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-emerald-600 uppercase">Kategori B</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Masa Bercocok Tanam (Food Producing / Sedenter)</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          </div>
+
+          <!-- Target 3: Masa Perundagian -->
+          <div id="drop-target-nekara" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'nekara')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-purple-600 uppercase">Kategori C</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Masa Perundagian & Tradisi Megalitikum (Logam/Batu Besar)</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          </div>
+
+          <!-- Target 4: Interaksi Sosial -->
+          <div id="drop-target-gotong" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'gotong')" class="drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all">
+            <span class="text-xs font-bold text-blue-600 uppercase">Kategori D</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">Dinamika Sosial Masyarakat Sekitar (Kerjasama Lingkungan)</p>
+            <div class="drop-slot mt-2 text-xs text-slate-400 italic">Letakkan kartu di sini</div>
+          </div>
+        </div>
+
+        <!-- Feedback & Reset -->
+        <div class="flex items-center justify-between pt-2">
+          <div id="dnd-status-feedback" class="text-xs font-semibold text-slate-500">
+            Cocokkan 4 kartu peninggalan/konsep ke wadah periodisasi yang pas.
+          </div>
+          <button onclick="resetDragAndDrop()" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            Reset Tantangan Kartu
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Button to Next Step -->
+      <div class="flex justify-end pt-4">
+        <button onclick="switchTab('evaluasi')" class="inline-flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all">
+          <span>Siap Ikuti Tes Pemahaman Akhir</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: TES PEMAHAMAN / EVALUASI AKHIR (SCORM) -->
+    <!-- ========================================== -->
+    <section id="content-evaluasi" class="tab-content hidden space-y-8 animate-fadeIn">
+      <!-- Section Header -->
+      <div class="pb-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Evaluasi Standar SCORM 1.2</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Tes Pemahaman: Keberagaman Lingkungan Sekitar</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">10 Soal Pilihan Ganda berbobot 10 poin per soal. Syarat kelulusan (KKM): <strong class="text-brand-600">75 poin</strong>.</p>
+        </div>
+
+        <div class="flex items-center space-x-3 bg-white dark:bg-slate-900 px-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-semibold">Status Pengerjaan</span>
+            <span id="quiz-progress-text" class="text-xs font-bold text-brand-600 dark:text-brand-400">0 / 10 Terjawab</span>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/50 flex items-center justify-center text-brand-600 font-bold text-sm">
+            📝
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Card (Hidden until submitted) -->
+      <div id="quiz-result-container" class="hidden bg-white dark:bg-slate-900 border-2 rounded-3xl p-6 sm:p-8 shadow-xl transition-all duration-300">
+        <div class="max-w-2xl mx-auto text-center space-y-4">
+          <div id="result-badge-icon" class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-3xl shadow-lg">
+            🏆
+          </div>
+
+          <h3 id="result-status-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            Selamat! Kamu LULUS Evaluasi
+          </h3>
+
+          <p id="result-status-desc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Data skor telah disimpan secara permanen ke dalam LMS SCORM melalui fungsi LMSSetValue dan LMSCommit.
+          </p>
+
+          <!-- Score Metrics Box -->
+          <div class="grid grid-cols-3 gap-3 max-w-md mx-auto my-6 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700">
+            <div>
+              <span class="text-[10px] text-slate-400 uppercase font-semibold">Skor Akhir</span>
+              <div id="result-score-number" class="text-2xl sm:text-3xl font-black text-brand-600">80</div>
+              <span class="text-[10px] text-slate-400">Skala 0-100</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 uppercase font-semibold">SCORM Status</span>
+              <div id="result-scorm-status" class="text-sm sm:text-base font-bold text-emerald-600 uppercase mt-1">passed</div>
+              <span class="text-[10px] text-slate-400">cmi.core</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-slate-400 uppercase font-semibold">Hasil KKM</span>
+              <div id="result-kkm-status" class="text-sm sm:text-base font-bold text-blue-600 uppercase mt-1">TUNTAS</div>
+              <span class="text-[10px] text-slate-400">KKM ≥ 75</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-3 pt-2">
+            <button onclick="retakeQuiz()" class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+              Ulangi Evaluasi (Remedial)
+            </button>
+            <button onclick="sendScormManual()" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 font-bold text-xs text-white shadow-md transition-colors flex items-center space-x-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+              <span>Sinkron Ulang ke LMS</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Form & Questions List -->
+      <form id="quiz-form" onsubmit="handleQuizSubmit(event)" class="space-y-6">
+        <div id="questions-container" class="space-y-6">
+          <!-- Soal diinjeksi via JavaScript -->
+        </div>
+
+        <!-- Submit Container -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="text-xs text-slate-500">
+            Periksa kembali jawaban Anda sebelum menekan tombol Kirim. Nilai akan otomatis dikirim ke variabel LMS.
+          </div>
+          <button type="submit" id="btn-submit-quiz" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm px-8 py-3 rounded-xl shadow-lg shadow-brand-600/30 transition-all hover:scale-[1.02]">
+            <span>Kirim Jawaban & Sinkron SCORM</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Review / Pembahasan Section (Revealed after submission) -->
+      <div id="review-container" class="hidden space-y-4 pt-6">
+        <h3 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+          <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Kunci Jawaban & Pembahasan Mendalam (Buku IPS Kelas 7 Edisi 2023)
+        </h3>
+        <div id="review-items-list" class="space-y-4">
+          <!-- Diisi otomatis setelah submit -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur py-6 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+      <div class="flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-500"></span>
+        <span>Modul SCORM 1.2 Terverifikasi (cmi.core.score.raw & lesson_status)</span>
+      </div>
+      <div>
+        IPS SMP Kelas 7 • Tema 02: Keberagaman Lingkungan Sekitar • Kurikulum Merdeka 2023
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT: SCORM 1.2 ENGINE, SIMULATION, QUIZ & APP UI -->
+  <!-- ======================================================== -->
+  <script>
+    /* ========================================================
+       1. SCORM 1.2 WRAPPER & LMS HANDLER
+       ======================================================== */
+    const ScormManager = {
+      api: null,
+      isInitialized: false,
+      isStandalone: false,
+      studentName: "Siswa Pembelajar",
+      rawScore: 0,
+      lessonStatus: "incomplete",
+
+      // Algoritma standar pencarian SCORM 1.2 API
+      findAPI(win) {
+        let attempts = 0;
+        while ((win.API == null) && (win.parent != null) && (win.parent != win)) {
+          attempts++;
+          if (attempts > 500) return null;
+          win = win.parent;
+        }
+        if (win.API != null) return win.API;
+        if ((win.opener != null) && (typeof(win.opener) != "undefined")) {
+          return this.findAPI(win.opener);
+        }
+        return null;
+      },
+
+      init() {
+        let api = this.findAPI(window);
+        if (api == null) {
+          console.warn("[SCORM 1.2] API tidak ditemukan pada jendela induk. Mengaktifkan Virtual Standalone Mock API.");
+          this.isStandalone = true;
+          this.api = this.createMockAPI();
+        } else {
+          this.api = api;
+          this.isStandalone = false;
+        }
+
+        try {
+          const res = this.api.LMSInitialize("");
+          if (res.toString() === "true" || res === true) {
+            this.isInitialized = true;
+            console.log("[SCORM 1.2] Berhasil LMSInitialize.");
+
+            // Ambil nama siswa jika ada di LMS
+            const name = this.api.LMSGetValue("cmi.core.student_name");
+            if (name && name.trim() !== "") {
+              this.studentName = name;
+              document.getElementById("student-display-name").innerText = name;
+            }
+
+            // Ambil status belajar sebelumnya atau pasang incomplete
+            const prevStatus = this.api.LMSGetValue("cmi.core.lesson_status");
+            if (prevStatus && prevStatus !== "" && prevStatus !== "not attempted") {
+              this.lessonStatus = prevStatus;
+            } else {
+              this.api.LMSSetValue("cmi.core.lesson_status", "incomplete");
+              this.api.LMSCommit("");
+            }
+          }
+        } catch (e) {
+          console.error("[SCORM 1.2] Error saat inisialisasi:", e);
+        }
+
+        this.updateBadgeUI();
+      },
+
+      createMockAPI() {
+        const memory = {
+          "cmi.core.lesson_status": "incomplete",
+          "cmi.core.student_name": "Siswa Simulasi (Lokal)",
+          "cmi.core.score.raw": "0",
+          "cmi.core.score.min": "0",
+          "cmi.core.score.max": "100"
+        };
+        return {
+          LMSInitialize: function(param) { return "true"; },
+          LMSFinish: function(param) { return "true"; },
+          LMSGetValue: function(elem) { return memory[elem] || ""; },
+          LMSSetValue: function(elem, val) { memory[elem] = val.toString(); return "true"; },
+          LMSCommit: function(param) { return "true"; },
+          LMSGetLastError: function() { return "0"; },
+          LMSGetErrorString: function() { return "No error"; },
+          LMSGetDiagnostic: function() { return "Mock SCORM API active"; }
+        };
+      },
+
+      setEvaluationScore(score) {
+        if (!this.api) return;
+        this.rawScore = Math.round(score);
+
+        // Aturan SCORM 1.2 sesuai instruksi:
+        // skor >= 75 -> 'passed', jika kurang -> 'completed'
+        this.lessonStatus = (this.rawScore >= 75) ? "passed" : "completed";
+
+        try {
+          this.api.LMSSetValue("cmi.core.score.raw", this.rawScore.toString());
+          this.api.LMSSetValue("cmi.core.score.min", "0");
+          this.api.LMSSetValue("cmi.core.score.max", "100");
+          this.api.LMSSetValue("cmi.core.lesson_status", this.lessonStatus);
+          this.api.LMSCommit("");
+          console.log(`[SCORM 1.2] Tersimpan ke LMS: Skor = ${this.rawScore}, Status = ${this.lessonStatus}`);
+        } catch (e) {
+          console.error("[SCORM 1.2] Gagal simpan skor ke LMS:", e);
+        }
+
+        this.updateBadgeUI();
+        this.updateDashboardMetrics();
+      },
+
+      finish() {
+        if (this.isInitialized && this.api) {
+          try {
+            this.api.LMSCommit("");
+            this.api.LMSFinish("");
+          } catch (e) {}
+        }
+      },
+
+      updateBadgeUI() {
+        const badge = document.getElementById("scorm-status-badge");
+        const text = document.getElementById("scorm-status-text");
+        if (!badge || !text) return;
+
+        if (this.isStandalone) {
+          badge.className = "flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-950/70 dark:text-blue-300 border border-blue-300 dark:border-blue-800";
+          text.innerHTML = "SCORM: Standalone";
+        } else {
+          badge.className = "flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800";
+          text.innerHTML = `LMS Terhubung (${this.lessonStatus})`;
+        }
+      },
+
+      updateDashboardMetrics() {
+        const dashStatus = document.getElementById("dash-lesson-status");
+        const dashScore = document.getElementById("dash-score-val");
+        const dashScoreStatus = document.getElementById("dash-score-status");
+        const badgeScore = document.getElementById("badge-score");
+
+        if (dashStatus) dashStatus.innerText = this.lessonStatus;
+        if (dashScore) dashScore.innerText = this.rawScore;
+        if (badgeScore) {
+          badgeScore.classList.remove("hidden");
+          badgeScore.innerText = `${this.rawScore}/100`;
+        }
+        if (dashScoreStatus) {
+          dashScoreStatus.innerText = (this.rawScore >= 75) ? "Lulus KKM (Passed)" : "Belum Memenuhi KKM (Completed)";
+        }
+      }
+    };
+
+    // Auto terminate SCORM on window unload
+    window.addEventListener("beforeunload", () => {
+      ScormManager.finish();
+    });
+
+    /* ========================================================
+       2. WEB AUDIO API SYNTHESIZER
+       ======================================================== */
+    let audioContext = null;
+    let isSoundEnabled = true;
+
+    function getAudioCtx() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      return audioContext;
+    }
+
+    function playSound(type) {
+      if (!isSoundEnabled) return;
+      try {
+        const ctx = getAudioCtx();
+        if (ctx.state === "suspended") ctx.resume();
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+
+        if (type === "click") {
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(550, now);
+          osc.frequency.exponentialRampToValueAtTime(750, now + 0.05);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === "success") {
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.1);
+          osc.frequency.setValueAtTime(783.99, now + 0.2);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else if (type === "error") {
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(260, now);
+          osc.frequency.linearRampToValueAtTime(180, now + 0.2);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        }
+      } catch (e) {
+        console.warn("Audio Context tidak didukung:", e);
+      }
+    }
+
+    function toggleSound() {
+      isSoundEnabled = !isSoundEnabled;
+      const iconOn = document.getElementById("icon-sound-on");
+      const iconOff = document.getElementById("icon-sound-off");
+      if (isSoundEnabled) {
+        iconOn.classList.remove("hidden");
+        iconOff.classList.add("hidden");
+        playSound("click");
+      } else {
+        iconOn.classList.add("hidden");
+        iconOff.classList.remove("hidden");
+      }
+    }
+
+    /* ========================================================
+       3. DARK / LIGHT THEME TOGGLE
+       ======================================================== */
+    function initTheme() {
+      const savedTheme = localStorage.getItem("ips_theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add("dark");
+        document.getElementById("icon-sun").classList.remove("hidden");
+        document.getElementById("icon-moon").classList.add("hidden");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.getElementById("icon-sun").classList.add("hidden");
+        document.getElementById("icon-moon").classList.remove("hidden");
+      }
+    }
+
+    function toggleTheme() {
+      playSound("click");
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("ips_theme", isDark ? "dark" : "light");
+      document.getElementById("icon-sun").classList.toggle("hidden", !isDark);
+      document.getElementById("icon-moon").classList.toggle("hidden", isDark);
+      if (typeof drawGeologySimulation === "function") drawGeologySimulation();
+    }
+
+    /* ========================================================
+       4. TAB NAVIGATION & READING PROGRESS
+       ======================================================== */
+    const visitedTabs = new Set(["dashboard"]);
+
+    function switchTab(tabId) {
+      playSound("click");
+      visitedTabs.add(tabId);
+      updateReadingProgress();
+
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.remove("active", "bg-brand-500", "text-white", "shadow-sm", "shadow-brand-500/30");
+        btn.classList.add("text-slate-600", "dark:text-slate-300", "hover:bg-slate-100", "dark:hover:bg-slate-800");
+      });
+
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.add("active", "bg-brand-500", "text-white", "shadow-sm", "shadow-brand-500/30");
+        activeBtn.classList.remove("text-slate-600", "dark:text-slate-300", "hover:bg-slate-100", "dark:hover:bg-slate-800");
+      }
+
+      document.querySelectorAll(".tab-content").forEach(content => {
+        content.classList.add("hidden");
+        content.classList.remove("block");
+      });
+
+      const activeContent = document.getElementById(`content-${tabId}`);
+      if (activeContent) {
+        activeContent.classList.remove("hidden");
+        activeContent.classList.add("block");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      if (tabId === "simulasi") {
+        setTimeout(() => {
+          resizeGeologyCanvas();
+          drawGeologySimulation();
+        }, 50);
+      }
+    }
+
+    function scrollToTopic(elementId) {
+      playSound("click");
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function toggleFlip(cardElement) {
+      playSound("click");
+      cardElement.classList.toggle("flipped");
+    }
+
+    function updateReadingProgress() {
+      const pct = Math.min(100, Math.round((visitedTabs.size / 4) * 100));
+      const bar = document.getElementById("dash-reading-bar");
+      const text = document.getElementById("dash-reading-pct");
+      if (bar) bar.style.width = `${pct}%`;
+      if (text) text.innerText = `${pct}%`;
+    }
+
+    /* ========================================================
+       5. SIMULASI CANVAS HTML5: GARIS WAKTU GEOLOGIS BUMI
+       ======================================================== */
+    const geoCanvas = document.getElementById("geologyCanvas");
+    const geoCtx = geoCanvas.getContext("2d");
+
+    let currentEpochIndex = 0;
+
+    const epochs = [
+      {
+        name: "Zaman Arkaekum",
+        time: "± 2.500 Juta Tahun Lalu",
+        life: "Nir-kehidupan (Bumi Panas Membara)",
+        desc: "Zaman tertua dalam sejarah bumi. Kerak bumi masih berupa cairan lava membara dengan suhu yang teramat panas. Terjadi hujan meteorit secara konstan dan gas atmosfer dipenuhi uap belerang serta karbon dioksida. Belum ada tanda-tanda organisme hidup.",
+        skyColorTop: "#450a0a",
+        skyColorBottom: "#7f1d1d",
+        groundColor: "#b91c1c",
+        lavaGlow: true,
+        creatures: "Lahar & Batuan Vulkanik"
+      },
+      {
+        name: "Zaman Paleozoikum",
+        time: "± 340 Juta Tahun Lalu",
+        life: "Zaman Primer (Mikroorganisme, Ikan, & Amfibi Awal)",
+        desc: "Suhu permukaan bumi mulai mendingin dan curah hujan sangat lebat menghasilkan samudra luas purba. Mulai bermunculan mikroorganisme bersel tunggal, ubur-ubur, cacing laut, ikan bertulang rawan, dan tumbuhan lumut paku pertama.",
+        skyColorTop: "#082f49",
+        skyColorBottom: "#0284c7",
+        groundColor: "#0f766e",
+        lavaGlow: false,
+        creatures: "Trilobita, Ikan Purba & Lautan"
+      },
+      {
+        name: "Zaman Mesozoikum",
+        time: "± 140 Juta Tahun Lalu",
+        life: "Zaman Sekunder (Kejayaan Reptil Raksasa / Dinosaurus)",
+        desc: "Iklim bumi menjadi hangat dan lembap dengan hutan pakis dan pohon runjung raksasa. Masa ini merupakan zaman kejayaan reptil-reptil purba berukuran raksasa seperti Brachiosaurus, Tyrannosaurus rex, serta munculnya burung dan mamalia berkantung kecil.",
+        skyColorTop: "#064e3b",
+        skyColorBottom: "#059669",
+        groundColor: "#365314",
+        lavaGlow: false,
+        creatures: "Dinosaurus & Hutan Pakis Purba"
+      },
+      {
+        name: "Zaman Neozoikum",
+        time: "± 60 Juta Tahun Lalu - Sekarang",
+        life: "Zaman Tersier & Kuarter (Kemunculan Manusia Purba & Modern)",
+        desc: "Bumi telah stabil sepenuhnya. Dinosaurus telah punah digantikan oleh dominasi mamalia besar (hewan menyusui). Pada kala Pleistosen dan Holosen di Zaman Kuarter, manusia purba (Pithecanthropus / Homo) mulai muncul dan berkembang di kepulauan Nusantara.",
+        skyColorTop: "#1e1b4b",
+        skyColorBottom: "#4338ca",
+        groundColor: "#15803d",
+        lavaGlow: false,
+        creatures: "Mamalia, Manusia Purba & Alam Modern"
+      }
+    ];
+
+    function resizeGeologyCanvas() {
+      const container = geoCanvas.parentElement;
+      if (container) {
+        const w = container.clientWidth;
+        geoCanvas.width = w > 900 ? 900 : Math.max(340, w);
+        geoCanvas.height = Math.min(340, Math.round(geoCanvas.width * 0.4));
+      }
+    }
+
+    window.addEventListener("resize", () => {
+      resizeGeologyCanvas();
+      drawGeologySimulation();
+    });
+
+    function drawGeologySimulation() {
+      const epoch = epochs[currentEpochIndex];
+      const w = geoCanvas.width;
+      const h = geoCanvas.height;
+
+      // 1. Sky Gradient
+      const skyGrad = geoCtx.createLinearGradient(0, 0, 0, h * 0.7);
+      skyGrad.addColorStop(0, epoch.skyColorTop);
+      skyGrad.addColorStop(1, epoch.skyColorBottom);
+      geoCtx.fillStyle = skyGrad;
+      geoCtx.fillRect(0, 0, w, h);
+
+      // 2. Stars / Meteorites if Arkaekum
+      if (currentEpochIndex === 0) {
+        geoCtx.fillStyle = "#fef08a";
+        for (let i = 0; i < 25; i++) {
+          const sx = (Math.sin(i * 99) * 0.5 + 0.5) * w;
+          const sy = (Math.cos(i * 33) * 0.5 + 0.5) * (h * 0.5);
+          geoCtx.fillRect(sx, sy, 2, 2);
+        }
+        // Meteor fire streak
+        geoCtx.beginPath();
+        geoCtx.strokeStyle = "rgba(251, 146, 60, 0.8)";
+        geoCtx.lineWidth = 3;
+        geoCtx.moveTo(w * 0.7, h * 0.1);
+        geoCtx.lineTo(w * 0.85, h * 0.3);
+        geoCtx.stroke();
+      }
+
+      // 3. Mountains / Distant Terrain
+      geoCtx.beginPath();
+      geoCtx.fillStyle = currentEpochIndex === 0 ? "#7f1d1d" : (currentEpochIndex === 1 ? "#0369a1" : "#14532d");
+      geoCtx.moveTo(0, h * 0.65);
+      geoCtx.lineTo(w * 0.25, h * 0.45);
+      geoCtx.lineTo(w * 0.5, h * 0.6);
+      geoCtx.lineTo(w * 0.75, h * 0.4);
+      geoCtx.lineTo(w, h * 0.65);
+      geoCtx.lineTo(w, h);
+      geoCtx.lineTo(0, h);
+      geoCtx.closePath();
+      geoCtx.fill();
+
+      // 4. Foreground Terrain & Elements
+      const groundGrad = geoCtx.createLinearGradient(0, h * 0.6, 0, h);
+      groundGrad.addColorStop(0, epoch.groundColor);
+      groundGrad.addColorStop(1, "#020617");
+      geoCtx.fillStyle = groundGrad;
+      geoCtx.fillRect(0, h * 0.65, w, h * 0.35);
+
+      // 5. Special Era Visuals
+      if (currentEpochIndex === 0) {
+        // Lava Cracks
+        geoCtx.beginPath();
+        geoCtx.strokeStyle = "#fbbf24";
+        geoCtx.lineWidth = 4;
+        geoCtx.moveTo(w * 0.1, h * 0.75);
+        geoCtx.lineTo(w * 0.3, h * 0.85);
+        geoCtx.lineTo(w * 0.6, h * 0.8);
+        geoCtx.lineTo(w * 0.9, h * 0.9);
+        geoCtx.stroke();
+      } else if (currentEpochIndex === 1) {
+        // Ocean waves
+        geoCtx.fillStyle = "rgba(14, 165, 233, 0.4)";
+        geoCtx.beginPath();
+        geoCtx.arc(w * 0.3, h * 0.8, 45, 0, Math.PI * 2);
+        geoCtx.arc(w * 0.7, h * 0.82, 60, 0, Math.PI * 2);
+        geoCtx.fill();
+      } else if (currentEpochIndex === 2) {
+        // Silhouette of Dino Neck / Tree
+        geoCtx.fillStyle = "#1c1917";
+        geoCtx.beginPath();
+        geoCtx.arc(w * 0.75, h * 0.52, 14, 0, Math.PI * 2); // head
+        geoCtx.moveTo(w * 0.75, h * 0.52);
+        geoCtx.quadraticCurveTo(w * 0.78, h * 0.65, w * 0.82, h * 0.8); // neck
+        geoCtx.lineTo(w * 0.72, h * 0.8);
+        geoCtx.closePath();
+        geoCtx.fill();
+      } else if (currentEpochIndex === 3) {
+        // Human camp / shelter silhouette
+        geoCtx.fillStyle = "#1e293b";
+        geoCtx.beginPath();
+        geoCtx.moveTo(w * 0.25, h * 0.75);
+        geoCtx.lineTo(w * 0.35, h * 0.6);
+        geoCtx.lineTo(w * 0.45, h * 0.75);
+        geoCtx.closePath();
+        geoCtx.fill();
+      }
+
+      // Update Telemetry Text
+      document.getElementById("geo-name").innerText = epoch.name;
+      document.getElementById("geo-time").innerText = epoch.time;
+      document.getElementById("geo-life").innerText = epoch.life;
+      document.getElementById("geo-desc-text").innerText = epoch.desc;
+    }
+
+    function setEpoch(index) {
+      playSound("click");
+      currentEpochIndex = index;
+
+      document.querySelectorAll(".epoch-btn").forEach((btn, idx) => {
+        if (idx === index) {
+          btn.className = "epoch-btn px-3 py-1.5 rounded-lg font-bold bg-amber-600 text-white shadow-sm";
+        } else {
+          btn.className = "epoch-btn px-3 py-1.5 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200";
+        }
+      });
+
+      drawGeologySimulation();
+      document.getElementById("dash-lab-status").innerText = "Aktif Mencoba";
+    }
+
+    function cycleEpoch() {
+      const next = (currentEpochIndex + 1) % epochs.length;
+      setEpoch(next);
+    }
+
+    /* ========================================================
+       6. DRAG AND DROP PRAAKSARA & INTERAKSI LAB
+       ======================================================== */
+    let draggedConcept = null;
+    const matchedConcepts = new Set();
+
+    function handleDragStart(e) {
+      draggedConcept = e.target.getAttribute("data-concept");
+      e.dataTransfer.setData("text/plain", draggedConcept);
+      e.target.classList.add("opacity-40");
+      playSound("click");
+    }
+
+    document.querySelectorAll(".drag-item").forEach(item => {
+      item.addEventListener("dragend", (e) => {
+        e.target.classList.remove("opacity-40");
+      });
+    });
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.currentTarget.classList.add("drag-over");
+    }
+
+    function handleDragLeave(e) {
+      e.currentTarget.classList.remove("drag-over");
+    }
+
+    function handleDrop(e, targetConcept) {
+      e.preventDefault();
+      e.currentTarget.classList.remove("drag-over");
+      const concept = e.dataTransfer.getData("text/plain") || draggedConcept;
+
+      if (concept === targetConcept) {
+        playSound("success");
+        matchedConcepts.add(targetConcept);
+
+        const sourceItem = document.getElementById(`drag-${concept}`);
+        if (sourceItem) {
+          sourceItem.removeAttribute("draggable");
+          sourceItem.classList.remove("cursor-grab", "active:cursor-grabbing", "hover:scale-105");
+          sourceItem.classList.add("cursor-default");
+          
+          const slot = e.currentTarget.querySelector(".drop-slot");
+          slot.innerHTML = `<span class="inline-flex items-center text-xs font-bold text-emerald-600 dark:text-emerald-400">✓ Tepat: ${sourceItem.innerText}</span>`;
+          sourceItem.style.display = "none";
+        }
+
+        e.currentTarget.classList.add("border-emerald-500", "bg-emerald-50/50", "dark:bg-emerald-950/20");
+
+        if (matchedConcepts.size === 4) {
+          document.getElementById("dnd-status-feedback").innerHTML = "<span class='text-brand-600 font-bold'>🎉 Hebat! Semua 4 kartu artefak & konsep IPS berhasil dikelompokkan dengan tepat!</span>";
+          document.getElementById("dash-lab-status").innerText = "Selesai Tuntas";
+        } else {
+          document.getElementById("dnd-status-feedback").innerText = `Bagus! ${matchedConcepts.size}/4 kartu berhasil dipasangkan.`;
+        }
+      } else {
+        playSound("error");
+        document.getElementById("dnd-status-feedback").innerHTML = "<span class='text-rose-500 font-semibold'>❌ Kurang tepat. Cermati kembali periodisasi dan corak kehidupannya!</span>";
+      }
+    }
+
+    function resetDragAndDrop() {
+      playSound("click");
+      matchedConcepts.clear();
+      const container = document.getElementById("drag-sources-container");
+      container.innerHTML = `
+        <div id="drag-kjokken" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-amber-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="kjokken">
+          🐚 Kjokkenmoddinger & Abris Sous Roche
+        </div>
+        <div id="drag-beliung" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-emerald-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="beliung">
+          🪓 Beliung Persegi & Kapak Lonjong
+        </div>
+        <div id="drag-nekara" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-purple-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="nekara">
+          🥁 Nekara Perunggu & Menhir Megalitikum
+        </div>
+        <div id="drag-gotong" draggable="true" ondragstart="handleDragStart(event)" class="drag-item cursor-grab active:cursor-grabbing px-3.5 py-2 rounded-xl bg-blue-700 text-white text-xs font-bold shadow-md hover:scale-105 transition-all select-none" data-concept="gotong">
+          🤝 Gotong Royong Irigasi (Interaksi Asosiatif)
+        </div>
+      `;
+
+      const targets = [
+        { id: "drop-target-kjokken", text: "Masa Berburu & Mengumpulkan Makanan (Nomaden/Gua)" },
+        { id: "drop-target-beliung", text: "Masa Bercocok Tanam (Food Producing / Sedenter)" },
+        { id: "drop-target-nekara", text: "Masa Perundagian & Tradisi Megalitikum (Logam/Batu Besar)" },
+        { id: "drop-target-gotong", text: "Dinamika Sosial Masyarakat Sekitar (Kerjasama Lingkungan)" }
+      ];
+
+      targets.forEach(t => {
+        const el = document.getElementById(t.id);
+        el.className = "drag-target p-4 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/80 flex flex-col items-center justify-center text-center min-h-[140px] transition-all";
+        const slot = el.querySelector(".drop-slot");
+        if (slot) slot.innerHTML = "Letakkan kartu di sini";
+      });
+
+      document.getElementById("dnd-status-feedback").innerText = "Cocokkan 4 kartu peninggalan/konsep ke wadah periodisasi yang pas.";
+    }
+
+    /* ========================================================
+       7. TES PEMAHAMAN AKHIR (SCORM 1.2) - 10 SOAL
+       ======================================================== */
+    const quizQuestions = [
+      {
+        id: 1,
+        question: "Berdasarkan periodisasi geologis pembentukan bumi, zaman tertua yang berlangsung sekitar 2.500 juta tahun lalu di mana kulit bumi masih sangat panas membara dan belum ada tanda-tanda kehidupan disebut zaman...",
+        options: [
+          "Paleozoikum",
+          "Arkaekum",
+          "Mesozoikum",
+          "Neozoikum"
+        ],
+        correct: 1,
+        explanation: "Zaman Arkaekum adalah zaman tertua (± 2.500 juta tahun lalu). Bumi saat itu masih berupa bola gas pijar yang sangat panas sehingga belum memungkinkan adanya kehidupan."
+      },
+      {
+        id: 2,
+        question: "Zaman Mesozoikum sering dijuluki sebagai zaman sekunder atau zaman reptil besar. Karakteristik utama perkembangan biosfer pada zaman ini adalah...",
+        options: [
+          "Bumi didominasi oleh reptil raksasa (dinosaurus) serta awal kemunculan pohon pinus dan burung purba",
+          "Munculnya manusia modern (Homo sapiens) dan berakhirnya zaman es",
+          "Hanya ditemukan mikroorganisme bersel satu dan ubur-ubur tanpa tulang",
+          "Terjadinya kepunahan total akibat pembekuan kerak samudra purba"
+        ],
+        correct: 0,
+        explanation: "Zaman Mesozoikum (± 140 juta tahun lalu) ditandai dengan berkembang pesatnya reptil raksasa (dinosaurus, pterodactyl) dan tanaman konifer."
+      },
+      {
+        id: 3,
+        question: "Di sepanjang pesisir timur Pulau Sumatra ditemukan gundukan kulit kerang dan siput purba setinggi bermeter-meter peninggalan manusia masa praaksara. Bukti arkeologis ini dikenal dengan istilah...",
+        options: [
+          "Abris Sous Roche",
+          "Sarkofagus",
+          "Kjokkenmoddinger",
+          "Candrasa"
+        ],
+        correct: 2,
+        explanation: "Kjokkenmoddinger (berasal dari bahasa Denmark: kjokken = dapur, modding = sampah) adalah fosil bukit sampah dapur kerang dan siput dari masa Mesolitikum."
+      },
+      {
+        id: 4,
+        question: "Peralihan dari masa berburu-meramu ke masa bercocok tanam dipandang sebagai revolusi kebudayaan terbesar pada masa praaksara karena...",
+        options: [
+          "Manusia purba mulai menggunakan senjata api dan logam perunggu untuk berburu",
+          "Pola hidup berubah dari sekadar mengumpulkan makanan (food gathering) menjadi memproduksi makanan (food producing) serta hidup menetap",
+          "Manusia telah mengenal aksara alfabet dan mendirikan kerajaan maritim",
+          "Manusia meninggalkan daratan dan membangun peradaban terapung di atas laut"
+        ],
+        correct: 1,
+        explanation: "Revolusi kebudayaan praaksara terjadi saat manusia berubah dari food gathering (nomaden) menjadi food producing (bercocok tanam & menetap/sedenter)."
+      },
+      {
+        id: 5,
+        question: "Nekara perunggu berukuran besar yang banyak ditemukan di kepulauan Indonesia, seperti di Bali dan Kepulauan Selayar, pada masa perundagian umumnya berfungsi sebagai...",
+        options: [
+          "Tempat menyimpan beras hasil panen ladang",
+          "Alat genderang bunyi-bunyian upacara memanggil hujan dan upacara keagamaan",
+          "Perhiasan penutup dada para prajurit perang",
+          "Mata uang resmi perdagangan antarpulau"
+        ],
+        correct: 1,
+        explanation: "Nekara perunggu pada masa perundagian berfungsi sebagai instrumen musik sakral untuk upacara keagamaan dan memanggil hujan."
+      },
+      {
+        id: 6,
+        question: "Syarat mutlak agar suatu hubungan antarmanusia dapat dikategorikan sebagai interaksi sosial adalah harus memiliki...",
+        options: [
+          "Kontak sosial dan komunikasi dua arah",
+          "Kesesuaian status ekonomi dan jabatan yang sama",
+          "Pertemuan tatap muka langsung tanpa perantara media",
+          "Kesamaan suku bangsa dan bahasa daerah"
+        ],
+        correct: 0,
+        explanation: "Syarat terjadinya interaksi sosial menurut sosiologi adalah adanya kontak sosial dan proses komunikasi timbal balik."
+      },
+      {
+        id: 7,
+        question: "Warga desa di lereng Gunung Bromo bersama-sama membersihkan saluran air irigasi sawah terasering secara sukarela tanpa upah. Pola interaksi sosial ini mencerminkan bentuk...",
+        options: [
+          "Disosiatif berupa kontravensi",
+          "Asosiatif berupa kerja sama (gotong royong)",
+          "Disosiatif berupa persaingan kompetitif",
+          "Akomodasi paksaan (koersi)"
+        ],
+        correct: 1,
+        explanation: "Gotong royong membersihkan saluran air irigasi adalah bentuk interaksi sosial asosiatif yang mengarah pada persatuan dan keharmonisan masyarakat."
+      },
+      {
+        id: 8,
+        question: "Masyarakat yang mendiami kawasan dataran tinggi umumnya mengembangkan kegiatan ekonomi berbasis perkebunan teh, kopi, dan sayuran hortikultura. Hal ini membuktikan bahwa...",
+        options: [
+          "Kondisi fisik geografis lingkungan memengaruhi corak mata pencaharian dan kebudayaan masyarakat",
+          "Masyarakat pegunungan tidak memiliki keterampilan berdagang",
+          "Dataran tinggi tidak dapat ditanami tanaman pangan jenis apa pun",
+          "Semua wilayah di Indonesia memiliki potensi alam yang seragam"
+        ],
+        correct: 0,
+        explanation: "Bentang alam dan kondisi iklim mikro secara langsung memengaruhi cara manusia beradaptasi dalam memenuhi kebutuhan hidupnya."
+      },
+      {
+        id: 9,
+        question: "Inti permasalahan ekonomi yang memicu perlunya manusia bertindak bijak dalam memanfaatkan lingkungan sekitar adalah adanya 'Kelangkaan' (Scarcity), yaitu...",
+        options: [
+          "Jumlah uang yang beredar di masyarakat melebihi jumlah barang yang dijual",
+          "Kebutuhan manusia tidak terbatas, sedangkan sumber daya pemenuh kebutuhan jumlahnya terbatas",
+          "Ketiadaan teknologi untuk mengolah hasil tambang minyak bumi",
+          "Tingginya angka pengangguran akibat bencana alam gempa bumi"
+        ],
+        correct: 1,
+        explanation: "Kelangkaan (scarcity) adalah kesenjangan antara kebutuhan manusia yang tanpa batas dengan ketersediaan alat pemuas kebutuhan yang terbatas."
+      },
+      {
+        id: 10,
+        question: "Konsep Pembangunan Berkelanjutan (Sustainable Development / SDGs) dalam memanfaatkan kekayaan lingkungan sekitar bertujuan untuk...",
+        options: [
+          "Mengeksploitasi seluruh tambang mineral secepat mungkin demi laba devisa instan",
+          "Memenuhi kebutuhan generasi masa kini tanpa mengorbankan hak dan kemampuan generasi masa depan untuk memenuhi kebutuhannya",
+          "Menghentikan seluruh aktivitas pembangunan pabrik dan kembali ke zaman batu",
+          "Menyerahkan pengelolaan hutan secara eksklusif kepada perusahaan asing"
+        ],
+        correct: 1,
+        explanation: "Pembangunan berkelanjutan adalah pembangunan yang memenuhi kebutuhan saat ini dengan tetap menjaga kelestarian ekologis bagi generasi masa depan."
+      }
+    ];
+
+    let userAnswers = {};
+
+    function renderQuizQuestions() {
+      const container = document.getElementById("questions-container");
+      container.innerHTML = "";
+
+      quizQuestions.forEach((q, index) => {
+        const qNum = index + 1;
+        const qBox = document.createElement("div");
+        qBox.className = "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4";
+        qBox.id = `q-card-${q.id}`;
+
+        let optionsHtml = "";
+        q.options.forEach((opt, optIdx) => {
+          optionsHtml += `
+            <label class="flex items-start space-x-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700/80 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer transition-colors text-xs sm:text-sm">
+              <input type="radio" name="question_${q.id}" value="${optIdx}" onchange="handleAnswerSelect(${q.id}, ${optIdx})" class="mt-0.5 text-brand-600 focus:ring-brand-500">
+              <span class="text-slate-700 dark:text-slate-300">${opt}</span>
+            </label>
+          `;
+        });
+
+        qBox.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300">
+              Soal ${qNum} dari 10 • 10 Poin
+            </span>
+            <span id="answered-indicator-${q.id}" class="text-xs text-slate-400 font-medium">Belum Dijawab</span>
+          </div>
+          <h4 class="text-sm sm:text-base font-semibold text-slate-900 dark:text-white leading-relaxed">
+            ${q.question}
+          </h4>
+          <div class="space-y-2">
+            ${optionsHtml}
+          </div>
+        `;
+
+        container.appendChild(qBox);
+      });
+    }
+
+    function handleAnswerSelect(qId, optIdx) {
+      playSound("click");
+      userAnswers[qId] = optIdx;
+
+      const indicator = document.getElementById(`answered-indicator-${qId}`);
+      if (indicator) {
+        indicator.innerText = "✓ Sudah Terjawab";
+        indicator.className = "text-xs font-bold text-brand-600 dark:text-brand-400";
+      }
+
+      const count = Object.keys(userAnswers).length;
+      document.getElementById("quiz-progress-text").innerText = `${count} / 10 Terjawab`;
+    }
+
+    function handleQuizSubmit(e) {
+      e.preventDefault();
+      playSound("click");
+
+      const answeredCount = Object.keys(userAnswers).length;
+      if (answeredCount < quizQuestions.length) {
+        if (!confirm(`Kamu baru menjawab ${answeredCount} dari 10 soal. Soal yang belum dijawab akan dihitung salah. Yakin ingin mengirim jawaban sekarang?`)) {
+          return;
+        }
+      }
+
+      let correctCount = 0;
+      quizQuestions.forEach(q => {
+        if (userAnswers[q.id] === q.correct) {
+          correctCount++;
+        }
+      });
+
+      const finalScore = Math.round((correctCount / quizQuestions.length) * 100);
+
+      // Sinkronisasi ke SCORM 1.2
+      ScormManager.setEvaluationScore(finalScore);
+
+      // Tampilkan hasil
+      displayQuizResult(finalScore, correctCount);
+
+      // Tampilkan pembahasan
+      renderQuizReview();
+
+      // Audio respons
+      if (finalScore >= 75) {
+        playSound("success");
+      } else {
+        playSound("error");
+      }
+
+      document.getElementById("quiz-result-container").scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function displayQuizResult(score, correctCount) {
+      const container = document.getElementById("quiz-result-container");
+      const title = document.getElementById("result-status-title");
+      const desc = document.getElementById("result-status-desc");
+      const icon = document.getElementById("result-badge-icon");
+      const scoreNum = document.getElementById("result-score-number");
+      const scormStatus = document.getElementById("result-scorm-status");
+      const kkmStatus = document.getElementById("result-kkm-status");
+
+      container.classList.remove("hidden");
+      scoreNum.innerText = score;
+
+      if (score >= 75) {
+        container.className = "bg-emerald-50/60 dark:bg-emerald-950/20 border-2 border-emerald-500 rounded-3xl p-6 sm:p-8 shadow-xl";
+        icon.className = "w-20 h-20 mx-auto rounded-full bg-emerald-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-emerald-500/30";
+        icon.innerHTML = "🏆";
+        title.innerText = "Selamat! Kamu LULUS KKM!";
+        desc.innerText = `Kamu menjawab ${correctCount} dari 10 soal dengan benar. Status kelulusanmu telah berhasil dikirim ke SCORM LMS dengan status PASSED.`;
+        scormStatus.innerText = "passed";
+        scormStatus.className = "text-sm sm:text-base font-bold text-emerald-600 uppercase mt-1";
+        kkmStatus.innerText = "TUNTAS";
+        kkmStatus.className = "text-sm sm:text-base font-bold text-emerald-600 uppercase mt-1";
+      } else {
+        container.className = "bg-rose-50/60 dark:bg-rose-950/20 border-2 border-rose-400 rounded-3xl p-6 sm:p-8 shadow-xl";
+        icon.className = "w-20 h-20 mx-auto rounded-full bg-rose-500 text-white flex items-center justify-center text-3xl shadow-lg shadow-rose-500/30";
+        icon.innerHTML = "📖";
+        title.innerText = "Belum Mencapai KKM (Minimal 75)";
+        desc.innerText = `Kamu menjawab ${correctCount} dari 10 soal dengan benar. Sesuai ketentuan SCORM, statusmu saat ini adalah COMPLETED. Silakan pelajari kembali modul dan lakukan remedial!`;
+        scormStatus.innerText = "completed";
+        scormStatus.className = "text-sm sm:text-base font-bold text-amber-600 uppercase mt-1";
+        kkmStatus.innerText = "REMEDIAL";
+        kkmStatus.className = "text-sm sm:text-base font-bold text-rose-600 uppercase mt-1";
+      }
+
+      document.getElementById("btn-submit-quiz").classList.add("hidden");
+    }
+
+    function renderQuizReview() {
+      const container = document.getElementById("review-container");
+      const list = document.getElementById("review-items-list");
+      list.innerHTML = "";
+      container.classList.remove("hidden");
+
+      quizQuestions.forEach((q, idx) => {
+        const userChoice = userAnswers[q.id];
+        const isCorrect = userChoice === q.correct;
+
+        const box = document.createElement("div");
+        box.className = `p-4 sm:p-5 rounded-2xl border text-xs sm:text-sm ${
+          isCorrect
+            ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800"
+            : "bg-rose-50/50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-800"
+        }`;
+
+        box.innerHTML = `
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold ${isCorrect ? "text-emerald-700 dark:text-emerald-300" : "text-rose-700 dark:text-rose-300"}">
+              Soal #${idx + 1} • ${isCorrect ? "Jawabanmu Benar (+10)" : "Jawabanmu Kurang Tepat (0)"}
+            </span>
+            <span class="text-xs px-2 py-0.5 rounded font-bold ${isCorrect ? "bg-emerald-200 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200" : "bg-rose-200 text-rose-800 dark:bg-rose-900 dark:text-rose-200"}">
+              ${isCorrect ? "✓ BENAR" : "✗ SALAH"}
+            </span>
+          </div>
+          <p class="font-semibold text-slate-800 dark:text-slate-100">${q.question}</p>
+          <div class="mt-2 space-y-1 text-xs">
+            <p class="text-slate-600 dark:text-slate-400">
+              Jawabanmu: <span class="font-bold ${isCorrect ? "text-emerald-600" : "text-rose-600"}">${userChoice !== undefined ? q.options[userChoice] : "Tidak dijawab"}</span>
+            </p>
+            ${!isCorrect ? `<p class="text-slate-600 dark:text-slate-400">Kunci Benar: <span class="font-bold text-emerald-600">${q.options[q.correct]}</span></p>` : ""}
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-slate-200 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-300">
+            <strong>Pembahasan:</strong> ${q.explanation}
+          </div>
+        `;
+        list.appendChild(box);
+      });
+    }
+
+    function retakeQuiz() {
+      playSound("click");
+      userAnswers = {};
+      document.getElementById("quiz-progress-text").innerText = "0 / 10 Terjawab";
+      document.getElementById("quiz-result-container").classList.add("hidden");
+      document.getElementById("review-container").classList.add("hidden");
+      document.getElementById("btn-submit-quiz").classList.remove("hidden");
+      renderQuizQuestions();
+      window.scrollTo({ top: document.getElementById("content-evaluasi").offsetTop - 70, behavior: "smooth" });
+    }
+
+    function sendScormManual() {
+      playSound("click");
+      ScormManager.setEvaluationScore(ScormManager.rawScore);
+      alert(`[SCORM 1.2 Sinkronisasi]\n\nSkor: ${ScormManager.rawScore}\nStatus: ${ScormManager.lessonStatus}\nLMSCommit berhasil dijalankan.`);
+    }
+
+    /* ========================================================
+       8. INITIALIZATION ON PAGE LOAD
+       ======================================================== */
+    window.addEventListener("DOMContentLoaded", () => {
+      initTheme();
+      ScormManager.init();
+      renderQuizQuestions();
+      resizeGeologyCanvas();
+      drawGeologySimulation();
+    });
+  </script>
+</body>
+</html>
